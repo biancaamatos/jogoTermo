@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermoLib", "TermoLib\TermoLib.csproj", "{9CFFB423-5DBB-4359-A269-89A8B700F180}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermoTest", "TermoTest\TermoTest.csproj", "{D26CEA3A-B9A2-4EDC-A6EA-DA0793839B13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TermoApp", "TermoApp\TermoApp.csproj", "{30306CFB-6521-4F71-8EE8-1C38101B3CEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CFFB423-5DBB-4359-A269-89A8B700F180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CFFB423-5DBB-4359-A269-89A8B700F180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CFFB423-5DBB-4359-A269-89A8B700F180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CFFB423-5DBB-4359-A269-89A8B700F180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26CEA3A-B9A2-4EDC-A6EA-DA0793839B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26CEA3A-B9A2-4EDC-A6EA-DA0793839B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26CEA3A-B9A2-4EDC-A6EA-DA0793839B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26CEA3A-B9A2-4EDC-A6EA-DA0793839B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30306CFB-6521-4F71-8EE8-1C38101B3CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30306CFB-6521-4F71-8EE8-1C38101B3CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30306CFB-6521-4F71-8EE8-1C38101B3CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30306CFB-6521-4F71-8EE8-1C38101B3CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7F0A053-28E3-4021-BEF9-5864E17E64E3}
+	EndGlobalSection
+EndGlobal
