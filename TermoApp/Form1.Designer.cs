@@ -58,35 +58,37 @@
             btn63 = new Button();
             btn62 = new Button();
             btn61 = new Button();
-            BtnQ = new Button();
-            btnW = new Button();
-            btnE = new Button();
-            btnR = new Button();
-            btnT = new Button();
-            btnP = new Button();
-            btnO = new Button();
-            btnI = new Button();
-            btnU = new Button();
-            btnY = new Button();
+            groupBox1 = new GroupBox();
+            MensNaoAceito = new Label();
             btnG = new Button();
+            btnH = new Button();
             btnF = new Button();
             btnD = new Button();
-            btnS = new Button();
-            btnA = new Button();
-            btnL = new Button();
             btnK = new Button();
-            btnJ = new Button();
-            btnH = new Button();
-            btnM = new Button();
-            btnN = new Button();
-            btnB = new Button();
-            btnV = new Button();
-            btnC = new Button();
-            btnX = new Button();
+            btnS = new Button();
+            btnL = new Button();
+            btnA = new Button();
             btnZ = new Button();
-            bntBACKSPACE = new Button();
+            btnP = new Button();
+            btnX = new Button();
+            btnO = new Button();
+            btnC = new Button();
+            btnI = new Button();
+            btnV = new Button();
+            btnU = new Button();
+            btnB = new Button();
+            btnY = new Button();
+            btnN = new Button();
+            btnT = new Button();
+            btnM = new Button();
+            btnR = new Button();
+            btnE = new Button();
+            bntBackSpace = new Button();
+            btnW = new Button();
             btnENTER = new Button();
-            groupBox1 = new GroupBox();
+            BtnQ = new Button();
+            btnJ = new Button();
+            btnReiniciar = new Button();
             groupBox2 = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -95,6 +97,8 @@
             // btn11
             // 
             btn11.BackColor = Color.Brown;
+            btn11.FlatAppearance.BorderSize = 3;
+            btn11.FlatStyle = FlatStyle.Flat;
             btn11.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn11.ForeColor = Color.White;
             btn11.Location = new Point(6, 22);
@@ -107,6 +111,8 @@
             // btn12
             // 
             btn12.BackColor = Color.Brown;
+            btn12.FlatAppearance.BorderSize = 3;
+            btn12.FlatStyle = FlatStyle.Flat;
             btn12.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn12.ForeColor = Color.White;
             btn12.Location = new Point(86, 22);
@@ -119,6 +125,8 @@
             // btn13
             // 
             btn13.BackColor = Color.Brown;
+            btn13.FlatAppearance.BorderSize = 3;
+            btn13.FlatStyle = FlatStyle.Flat;
             btn13.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn13.ForeColor = Color.White;
             btn13.Location = new Point(166, 22);
@@ -131,6 +139,8 @@
             // btn14
             // 
             btn14.BackColor = Color.Brown;
+            btn14.FlatAppearance.BorderSize = 3;
+            btn14.FlatStyle = FlatStyle.Flat;
             btn14.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn14.ForeColor = Color.White;
             btn14.Location = new Point(246, 22);
@@ -143,6 +153,8 @@
             // btn15
             // 
             btn15.BackColor = Color.Brown;
+            btn15.FlatAppearance.BorderSize = 3;
+            btn15.FlatStyle = FlatStyle.Flat;
             btn15.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn15.ForeColor = Color.White;
             btn15.Location = new Point(326, 22);
@@ -155,6 +167,8 @@
             // btn25
             // 
             btn25.BackColor = Color.Brown;
+            btn25.FlatAppearance.BorderSize = 3;
+            btn25.FlatStyle = FlatStyle.Flat;
             btn25.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn25.ForeColor = Color.White;
             btn25.Location = new Point(326, 98);
@@ -167,6 +181,8 @@
             // btn24
             // 
             btn24.BackColor = Color.Brown;
+            btn24.FlatAppearance.BorderSize = 3;
+            btn24.FlatStyle = FlatStyle.Flat;
             btn24.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn24.ForeColor = Color.White;
             btn24.Location = new Point(246, 98);
@@ -179,6 +195,8 @@
             // btn23
             // 
             btn23.BackColor = Color.Brown;
+            btn23.FlatAppearance.BorderSize = 3;
+            btn23.FlatStyle = FlatStyle.Flat;
             btn23.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn23.ForeColor = Color.White;
             btn23.Location = new Point(166, 98);
@@ -191,6 +209,8 @@
             // btn22
             // 
             btn22.BackColor = Color.Brown;
+            btn22.FlatAppearance.BorderSize = 3;
+            btn22.FlatStyle = FlatStyle.Flat;
             btn22.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn22.ForeColor = Color.White;
             btn22.Location = new Point(86, 98);
@@ -203,6 +223,8 @@
             // btn21
             // 
             btn21.BackColor = Color.Brown;
+            btn21.FlatAppearance.BorderSize = 3;
+            btn21.FlatStyle = FlatStyle.Flat;
             btn21.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn21.ForeColor = Color.White;
             btn21.Location = new Point(6, 98);
@@ -215,6 +237,8 @@
             // btn35
             // 
             btn35.BackColor = Color.Brown;
+            btn35.FlatAppearance.BorderSize = 3;
+            btn35.FlatStyle = FlatStyle.Flat;
             btn35.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn35.ForeColor = Color.White;
             btn35.Location = new Point(326, 173);
@@ -227,6 +251,8 @@
             // btn34
             // 
             btn34.BackColor = Color.Brown;
+            btn34.FlatAppearance.BorderSize = 3;
+            btn34.FlatStyle = FlatStyle.Flat;
             btn34.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn34.ForeColor = Color.White;
             btn34.Location = new Point(246, 173);
@@ -239,6 +265,8 @@
             // btn33
             // 
             btn33.BackColor = Color.Brown;
+            btn33.FlatAppearance.BorderSize = 3;
+            btn33.FlatStyle = FlatStyle.Flat;
             btn33.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn33.ForeColor = Color.White;
             btn33.Location = new Point(166, 173);
@@ -251,6 +279,8 @@
             // btn32
             // 
             btn32.BackColor = Color.Brown;
+            btn32.FlatAppearance.BorderSize = 3;
+            btn32.FlatStyle = FlatStyle.Flat;
             btn32.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn32.ForeColor = Color.White;
             btn32.Location = new Point(86, 173);
@@ -263,6 +293,8 @@
             // btn31
             // 
             btn31.BackColor = Color.Brown;
+            btn31.FlatAppearance.BorderSize = 3;
+            btn31.FlatStyle = FlatStyle.Flat;
             btn31.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn31.ForeColor = Color.White;
             btn31.Location = new Point(6, 173);
@@ -275,6 +307,8 @@
             // btn45
             // 
             btn45.BackColor = Color.Brown;
+            btn45.FlatAppearance.BorderSize = 3;
+            btn45.FlatStyle = FlatStyle.Flat;
             btn45.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn45.ForeColor = Color.White;
             btn45.Location = new Point(326, 249);
@@ -287,6 +321,8 @@
             // btn44
             // 
             btn44.BackColor = Color.Brown;
+            btn44.FlatAppearance.BorderSize = 3;
+            btn44.FlatStyle = FlatStyle.Flat;
             btn44.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn44.ForeColor = Color.White;
             btn44.Location = new Point(246, 249);
@@ -299,6 +335,8 @@
             // btn43
             // 
             btn43.BackColor = Color.Brown;
+            btn43.FlatAppearance.BorderSize = 3;
+            btn43.FlatStyle = FlatStyle.Flat;
             btn43.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn43.ForeColor = Color.White;
             btn43.Location = new Point(166, 249);
@@ -311,6 +349,8 @@
             // btn42
             // 
             btn42.BackColor = Color.Brown;
+            btn42.FlatAppearance.BorderSize = 3;
+            btn42.FlatStyle = FlatStyle.Flat;
             btn42.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn42.ForeColor = Color.White;
             btn42.Location = new Point(86, 249);
@@ -323,6 +363,8 @@
             // btn41
             // 
             btn41.BackColor = Color.Brown;
+            btn41.FlatAppearance.BorderSize = 3;
+            btn41.FlatStyle = FlatStyle.Flat;
             btn41.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn41.ForeColor = Color.White;
             btn41.Location = new Point(6, 249);
@@ -335,6 +377,8 @@
             // btn55
             // 
             btn55.BackColor = Color.Brown;
+            btn55.FlatAppearance.BorderSize = 3;
+            btn55.FlatStyle = FlatStyle.Flat;
             btn55.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn55.ForeColor = Color.White;
             btn55.Location = new Point(326, 322);
@@ -347,6 +391,8 @@
             // btn54
             // 
             btn54.BackColor = Color.Brown;
+            btn54.FlatAppearance.BorderSize = 3;
+            btn54.FlatStyle = FlatStyle.Flat;
             btn54.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn54.ForeColor = Color.White;
             btn54.Location = new Point(246, 322);
@@ -359,6 +405,8 @@
             // btn53
             // 
             btn53.BackColor = Color.Brown;
+            btn53.FlatAppearance.BorderSize = 3;
+            btn53.FlatStyle = FlatStyle.Flat;
             btn53.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn53.ForeColor = Color.White;
             btn53.Location = new Point(166, 322);
@@ -371,6 +419,8 @@
             // btn52
             // 
             btn52.BackColor = Color.Brown;
+            btn52.FlatAppearance.BorderSize = 3;
+            btn52.FlatStyle = FlatStyle.Flat;
             btn52.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn52.ForeColor = Color.White;
             btn52.Location = new Point(86, 322);
@@ -383,6 +433,8 @@
             // btn51
             // 
             btn51.BackColor = Color.Brown;
+            btn51.FlatAppearance.BorderSize = 3;
+            btn51.FlatStyle = FlatStyle.Flat;
             btn51.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn51.ForeColor = Color.White;
             btn51.Location = new Point(6, 322);
@@ -395,6 +447,8 @@
             // btn65
             // 
             btn65.BackColor = Color.Brown;
+            btn65.FlatAppearance.BorderSize = 3;
+            btn65.FlatStyle = FlatStyle.Flat;
             btn65.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn65.ForeColor = Color.White;
             btn65.Location = new Point(326, 398);
@@ -407,6 +461,8 @@
             // btn64
             // 
             btn64.BackColor = Color.Brown;
+            btn64.FlatAppearance.BorderSize = 3;
+            btn64.FlatStyle = FlatStyle.Flat;
             btn64.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn64.ForeColor = Color.White;
             btn64.Location = new Point(246, 398);
@@ -419,6 +475,8 @@
             // btn63
             // 
             btn63.BackColor = Color.Brown;
+            btn63.FlatAppearance.BorderSize = 3;
+            btn63.FlatStyle = FlatStyle.Flat;
             btn63.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn63.ForeColor = Color.White;
             btn63.Location = new Point(166, 398);
@@ -431,6 +489,8 @@
             // btn62
             // 
             btn62.BackColor = Color.Brown;
+            btn62.FlatAppearance.BorderSize = 3;
+            btn62.FlatStyle = FlatStyle.Flat;
             btn62.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn62.ForeColor = Color.White;
             btn62.Location = new Point(86, 398);
@@ -443,6 +503,8 @@
             // btn61
             // 
             btn61.BackColor = Color.Brown;
+            btn61.FlatAppearance.BorderSize = 3;
+            btn61.FlatStyle = FlatStyle.Flat;
             btn61.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
             btn61.ForeColor = Color.White;
             btn61.Location = new Point(6, 398);
@@ -451,397 +513,6 @@
             btn61.Size = new Size(71, 69);
             btn61.TabIndex = 25;
             btn61.UseVisualStyleBackColor = false;
-            // 
-            // BtnQ
-            // 
-            BtnQ.BackColor = Color.Brown;
-            BtnQ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            BtnQ.ForeColor = SystemColors.ButtonHighlight;
-            BtnQ.Location = new Point(24, 31);
-            BtnQ.Margin = new Padding(3, 2, 3, 2);
-            BtnQ.Name = "BtnQ";
-            BtnQ.Size = new Size(48, 49);
-            BtnQ.TabIndex = 30;
-            BtnQ.Text = "Q";
-            BtnQ.UseVisualStyleBackColor = false;
-            BtnQ.Click += btnTeclado_Click;
-            // 
-            // btnW
-            // 
-            btnW.BackColor = Color.Brown;
-            btnW.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnW.ForeColor = SystemColors.ButtonHighlight;
-            btnW.Location = new Point(78, 31);
-            btnW.Margin = new Padding(3, 2, 3, 2);
-            btnW.Name = "btnW";
-            btnW.Size = new Size(48, 49);
-            btnW.TabIndex = 31;
-            btnW.Text = "W";
-            btnW.UseVisualStyleBackColor = false;
-            btnW.Click += btnTeclado_Click;
-            // 
-            // btnE
-            // 
-            btnE.BackColor = Color.Brown;
-            btnE.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnE.ForeColor = SystemColors.ButtonHighlight;
-            btnE.Location = new Point(132, 31);
-            btnE.Margin = new Padding(3, 2, 3, 2);
-            btnE.Name = "btnE";
-            btnE.Size = new Size(48, 49);
-            btnE.TabIndex = 32;
-            btnE.Text = "E";
-            btnE.UseVisualStyleBackColor = false;
-            btnE.Click += btnTeclado_Click;
-            // 
-            // btnR
-            // 
-            btnR.BackColor = Color.Brown;
-            btnR.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnR.ForeColor = SystemColors.ButtonHighlight;
-            btnR.Location = new Point(186, 31);
-            btnR.Margin = new Padding(3, 2, 3, 2);
-            btnR.Name = "btnR";
-            btnR.Size = new Size(48, 49);
-            btnR.TabIndex = 33;
-            btnR.Text = "R";
-            btnR.UseVisualStyleBackColor = false;
-            btnR.Click += btnTeclado_Click;
-            // 
-            // btnT
-            // 
-            btnT.BackColor = Color.Brown;
-            btnT.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnT.ForeColor = SystemColors.ButtonHighlight;
-            btnT.Location = new Point(240, 31);
-            btnT.Margin = new Padding(3, 2, 3, 2);
-            btnT.Name = "btnT";
-            btnT.Size = new Size(48, 49);
-            btnT.TabIndex = 34;
-            btnT.Text = "T";
-            btnT.UseVisualStyleBackColor = false;
-            btnT.Click += btnTeclado_Click;
-            // 
-            // btnP
-            // 
-            btnP.BackColor = Color.Brown;
-            btnP.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnP.ForeColor = SystemColors.ButtonHighlight;
-            btnP.Location = new Point(510, 31);
-            btnP.Margin = new Padding(3, 2, 3, 2);
-            btnP.Name = "btnP";
-            btnP.Size = new Size(48, 49);
-            btnP.TabIndex = 39;
-            btnP.Text = "P";
-            btnP.UseVisualStyleBackColor = false;
-            btnP.Click += btnTeclado_Click;
-            // 
-            // btnO
-            // 
-            btnO.BackColor = Color.Brown;
-            btnO.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnO.ForeColor = SystemColors.ButtonHighlight;
-            btnO.Location = new Point(456, 31);
-            btnO.Margin = new Padding(3, 2, 3, 2);
-            btnO.Name = "btnO";
-            btnO.Size = new Size(48, 49);
-            btnO.TabIndex = 38;
-            btnO.Text = "O";
-            btnO.UseVisualStyleBackColor = false;
-            btnO.Click += btnTeclado_Click;
-            // 
-            // btnI
-            // 
-            btnI.BackColor = Color.Brown;
-            btnI.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnI.ForeColor = SystemColors.ButtonHighlight;
-            btnI.Location = new Point(402, 31);
-            btnI.Margin = new Padding(3, 2, 3, 2);
-            btnI.Name = "btnI";
-            btnI.Size = new Size(48, 49);
-            btnI.TabIndex = 37;
-            btnI.Text = "I";
-            btnI.UseVisualStyleBackColor = false;
-            btnI.Click += btnTeclado_Click;
-            // 
-            // btnU
-            // 
-            btnU.BackColor = Color.Brown;
-            btnU.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnU.ForeColor = SystemColors.ButtonHighlight;
-            btnU.Location = new Point(348, 31);
-            btnU.Margin = new Padding(3, 2, 3, 2);
-            btnU.Name = "btnU";
-            btnU.Size = new Size(48, 49);
-            btnU.TabIndex = 36;
-            btnU.Text = "U";
-            btnU.UseVisualStyleBackColor = false;
-            btnU.Click += btnTeclado_Click;
-            // 
-            // btnY
-            // 
-            btnY.BackColor = Color.Brown;
-            btnY.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnY.ForeColor = SystemColors.ButtonHighlight;
-            btnY.Location = new Point(294, 31);
-            btnY.Margin = new Padding(3, 2, 3, 2);
-            btnY.Name = "btnY";
-            btnY.Size = new Size(48, 49);
-            btnY.TabIndex = 35;
-            btnY.Text = "Y";
-            btnY.UseVisualStyleBackColor = false;
-            btnY.Click += btnTeclado_Click;
-            // 
-            // btnG
-            // 
-            btnG.BackColor = Color.Brown;
-            btnG.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnG.ForeColor = SystemColors.ButtonHighlight;
-            btnG.Location = new Point(267, 82);
-            btnG.Margin = new Padding(3, 2, 3, 2);
-            btnG.Name = "btnG";
-            btnG.Size = new Size(48, 49);
-            btnG.TabIndex = 44;
-            btnG.Text = "G";
-            btnG.UseVisualStyleBackColor = false;
-            btnG.Click += btnTeclado_Click;
-            // 
-            // btnF
-            // 
-            btnF.BackColor = Color.Brown;
-            btnF.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnF.ForeColor = SystemColors.ButtonHighlight;
-            btnF.Location = new Point(210, 82);
-            btnF.Margin = new Padding(3, 2, 3, 2);
-            btnF.Name = "btnF";
-            btnF.Size = new Size(48, 49);
-            btnF.TabIndex = 43;
-            btnF.Text = "F";
-            btnF.UseVisualStyleBackColor = false;
-            btnF.Click += btnTeclado_Click;
-            // 
-            // btnD
-            // 
-            btnD.BackColor = Color.Brown;
-            btnD.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnD.ForeColor = SystemColors.ButtonHighlight;
-            btnD.Location = new Point(155, 82);
-            btnD.Margin = new Padding(3, 2, 3, 2);
-            btnD.Name = "btnD";
-            btnD.Size = new Size(48, 49);
-            btnD.TabIndex = 42;
-            btnD.Text = "D";
-            btnD.UseVisualStyleBackColor = false;
-            btnD.Click += btnTeclado_Click;
-            // 
-            // btnS
-            // 
-            btnS.BackColor = Color.Brown;
-            btnS.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnS.ForeColor = SystemColors.ButtonHighlight;
-            btnS.Location = new Point(101, 82);
-            btnS.Margin = new Padding(3, 2, 3, 2);
-            btnS.Name = "btnS";
-            btnS.Size = new Size(48, 49);
-            btnS.TabIndex = 41;
-            btnS.Text = "S";
-            btnS.UseVisualStyleBackColor = false;
-            btnS.Click += btnTeclado_Click;
-            // 
-            // btnA
-            // 
-            btnA.BackColor = Color.Brown;
-            btnA.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnA.ForeColor = SystemColors.ButtonHighlight;
-            btnA.Location = new Point(47, 82);
-            btnA.Margin = new Padding(3, 2, 3, 2);
-            btnA.Name = "btnA";
-            btnA.Size = new Size(48, 49);
-            btnA.TabIndex = 40;
-            btnA.Text = "A";
-            btnA.UseVisualStyleBackColor = false;
-            btnA.Click += btnTeclado_Click;
-            // 
-            // btnL
-            // 
-            btnL.BackColor = Color.Brown;
-            btnL.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnL.ForeColor = SystemColors.ButtonHighlight;
-            btnL.Location = new Point(483, 82);
-            btnL.Margin = new Padding(3, 2, 3, 2);
-            btnL.Name = "btnL";
-            btnL.Size = new Size(48, 49);
-            btnL.TabIndex = 48;
-            btnL.Text = "L";
-            btnL.UseVisualStyleBackColor = false;
-            btnL.Click += btnTeclado_Click;
-            // 
-            // btnK
-            // 
-            btnK.BackColor = Color.Brown;
-            btnK.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnK.ForeColor = SystemColors.ButtonHighlight;
-            btnK.Location = new Point(429, 85);
-            btnK.Margin = new Padding(3, 2, 3, 2);
-            btnK.Name = "btnK";
-            btnK.Size = new Size(48, 49);
-            btnK.TabIndex = 47;
-            btnK.Text = "K";
-            btnK.UseVisualStyleBackColor = false;
-            btnK.Click += btnTeclado_Click;
-            // 
-            // btnJ
-            // 
-            btnJ.BackColor = Color.Brown;
-            btnJ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnJ.ForeColor = SystemColors.ButtonHighlight;
-            btnJ.Location = new Point(375, 82);
-            btnJ.Margin = new Padding(3, 2, 3, 2);
-            btnJ.Name = "btnJ";
-            btnJ.Size = new Size(48, 49);
-            btnJ.TabIndex = 46;
-            btnJ.Text = "J";
-            btnJ.UseVisualStyleBackColor = false;
-            btnJ.Click += btnTeclado_Click;
-            // 
-            // btnH
-            // 
-            btnH.BackColor = Color.Brown;
-            btnH.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnH.ForeColor = SystemColors.ButtonHighlight;
-            btnH.Location = new Point(321, 82);
-            btnH.Margin = new Padding(3, 2, 3, 2);
-            btnH.Name = "btnH";
-            btnH.Size = new Size(48, 49);
-            btnH.TabIndex = 45;
-            btnH.Text = "H";
-            btnH.UseVisualStyleBackColor = false;
-            btnH.Click += btnTeclado_Click;
-            // 
-            // btnM
-            // 
-            btnM.BackColor = Color.Brown;
-            btnM.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnM.ForeColor = SystemColors.ButtonHighlight;
-            btnM.Location = new Point(402, 135);
-            btnM.Margin = new Padding(3, 2, 3, 2);
-            btnM.Name = "btnM";
-            btnM.Size = new Size(48, 49);
-            btnM.TabIndex = 55;
-            btnM.Text = "M";
-            btnM.UseVisualStyleBackColor = false;
-            btnM.Click += btnTeclado_Click;
-            // 
-            // btnN
-            // 
-            btnN.BackColor = Color.Brown;
-            btnN.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnN.ForeColor = SystemColors.ButtonHighlight;
-            btnN.Location = new Point(348, 135);
-            btnN.Margin = new Padding(3, 2, 3, 2);
-            btnN.Name = "btnN";
-            btnN.Size = new Size(48, 49);
-            btnN.TabIndex = 54;
-            btnN.Text = "N";
-            btnN.UseVisualStyleBackColor = false;
-            btnN.Click += btnTeclado_Click;
-            // 
-            // btnB
-            // 
-            btnB.BackColor = Color.Brown;
-            btnB.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnB.ForeColor = SystemColors.ButtonHighlight;
-            btnB.Location = new Point(291, 135);
-            btnB.Margin = new Padding(3, 2, 3, 2);
-            btnB.Name = "btnB";
-            btnB.Size = new Size(48, 49);
-            btnB.TabIndex = 53;
-            btnB.Text = "B";
-            btnB.UseVisualStyleBackColor = false;
-            btnB.Click += btnTeclado_Click;
-            // 
-            // btnV
-            // 
-            btnV.BackColor = Color.Brown;
-            btnV.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnV.ForeColor = SystemColors.ButtonHighlight;
-            btnV.Location = new Point(237, 135);
-            btnV.Margin = new Padding(3, 2, 3, 2);
-            btnV.Name = "btnV";
-            btnV.Size = new Size(48, 49);
-            btnV.TabIndex = 52;
-            btnV.Text = "V";
-            btnV.UseVisualStyleBackColor = false;
-            btnV.Click += btnTeclado_Click;
-            // 
-            // btnC
-            // 
-            btnC.BackColor = Color.Brown;
-            btnC.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnC.ForeColor = SystemColors.ButtonHighlight;
-            btnC.Location = new Point(183, 135);
-            btnC.Margin = new Padding(3, 2, 3, 2);
-            btnC.Name = "btnC";
-            btnC.Size = new Size(48, 49);
-            btnC.TabIndex = 51;
-            btnC.Text = "C";
-            btnC.UseVisualStyleBackColor = false;
-            btnC.Click += btnTeclado_Click;
-            // 
-            // btnX
-            // 
-            btnX.BackColor = Color.Brown;
-            btnX.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnX.ForeColor = SystemColors.ButtonHighlight;
-            btnX.Location = new Point(129, 135);
-            btnX.Margin = new Padding(3, 2, 3, 2);
-            btnX.Name = "btnX";
-            btnX.Size = new Size(48, 49);
-            btnX.TabIndex = 50;
-            btnX.Text = "X";
-            btnX.UseVisualStyleBackColor = false;
-            btnX.Click += btnTeclado_Click;
-            // 
-            // btnZ
-            // 
-            btnZ.BackColor = Color.Brown;
-            btnZ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnZ.ForeColor = SystemColors.ButtonHighlight;
-            btnZ.Location = new Point(75, 135);
-            btnZ.Margin = new Padding(3, 2, 3, 2);
-            btnZ.Name = "btnZ";
-            btnZ.Size = new Size(48, 49);
-            btnZ.TabIndex = 49;
-            btnZ.Text = "Z";
-            btnZ.UseVisualStyleBackColor = false;
-            btnZ.Click += btnTeclado_Click;
-            // 
-            // bntBACKSPACE
-            // 
-            bntBACKSPACE.BackColor = Color.IndianRed;
-            bntBACKSPACE.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            bntBACKSPACE.ForeColor = SystemColors.ButtonHighlight;
-            bntBACKSPACE.Location = new Point(554, 85);
-            bntBACKSPACE.Margin = new Padding(3, 2, 3, 2);
-            bntBACKSPACE.Name = "bntBACKSPACE";
-            bntBACKSPACE.Size = new Size(48, 49);
-            bntBACKSPACE.TabIndex = 57;
-            bntBACKSPACE.Text = "<=";
-            bntBACKSPACE.UseVisualStyleBackColor = false;
-            // 
-            // btnENTER
-            // 
-            btnENTER.BackColor = Color.IndianRed;
-            btnENTER.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
-            btnENTER.ForeColor = SystemColors.ButtonHighlight;
-            btnENTER.Location = new Point(483, 138);
-            btnENTER.Margin = new Padding(3, 2, 3, 2);
-            btnENTER.Name = "btnENTER";
-            btnENTER.Size = new Size(119, 49);
-            btnENTER.TabIndex = 58;
-            btnENTER.Text = "ENTER";
-            btnENTER.UseVisualStyleBackColor = false;
-            btnENTER.Click += btnEnter_Click;
             // 
             // groupBox1
             // 
@@ -875,7 +546,7 @@
             groupBox1.Controls.Add(btn63);
             groupBox1.Controls.Add(btn64);
             groupBox1.Controls.Add(btn65);
-            groupBox1.Location = new Point(113, 20);
+            groupBox1.Location = new Point(146, 152);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -883,13 +554,431 @@
             groupBox1.TabIndex = 59;
             groupBox1.TabStop = false;
             // 
+            // MensNaoAceito
+            // 
+            MensNaoAceito.BackColor = Color.Snow;
+            MensNaoAceito.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            MensNaoAceito.ForeColor = Color.DarkRed;
+            MensNaoAceito.Location = new Point(164, 86);
+            MensNaoAceito.Name = "MensNaoAceito";
+            MensNaoAceito.Size = new Size(370, 42);
+            MensNaoAceito.TabIndex = 61;
+            MensNaoAceito.TextAlign = ContentAlignment.MiddleCenter;
+            MensNaoAceito.Visible = false;
+            // 
+            // btnG
+            // 
+            btnG.BackColor = Color.Brown;
+            btnG.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnG.ForeColor = SystemColors.ButtonHighlight;
+            btnG.Location = new Point(267, 82);
+            btnG.Margin = new Padding(3, 2, 3, 2);
+            btnG.Name = "btnG";
+            btnG.Size = new Size(48, 49);
+            btnG.TabIndex = 44;
+            btnG.Text = "G";
+            btnG.UseVisualStyleBackColor = false;
+            btnG.Click += btnTeclado_Click;
+            // 
+            // btnH
+            // 
+            btnH.BackColor = Color.Brown;
+            btnH.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnH.ForeColor = SystemColors.ButtonHighlight;
+            btnH.Location = new Point(321, 82);
+            btnH.Margin = new Padding(3, 2, 3, 2);
+            btnH.Name = "btnH";
+            btnH.Size = new Size(48, 49);
+            btnH.TabIndex = 45;
+            btnH.Text = "H";
+            btnH.UseVisualStyleBackColor = false;
+            btnH.Click += btnTeclado_Click;
+            // 
+            // btnF
+            // 
+            btnF.BackColor = Color.Brown;
+            btnF.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnF.ForeColor = SystemColors.ButtonHighlight;
+            btnF.Location = new Point(210, 82);
+            btnF.Margin = new Padding(3, 2, 3, 2);
+            btnF.Name = "btnF";
+            btnF.Size = new Size(48, 49);
+            btnF.TabIndex = 43;
+            btnF.Text = "F";
+            btnF.UseVisualStyleBackColor = false;
+            btnF.Click += btnTeclado_Click;
+            // 
+            // btnD
+            // 
+            btnD.BackColor = Color.Brown;
+            btnD.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnD.ForeColor = SystemColors.ButtonHighlight;
+            btnD.Location = new Point(155, 82);
+            btnD.Margin = new Padding(3, 2, 3, 2);
+            btnD.Name = "btnD";
+            btnD.Size = new Size(48, 49);
+            btnD.TabIndex = 42;
+            btnD.Text = "D";
+            btnD.UseVisualStyleBackColor = false;
+            btnD.Click += btnTeclado_Click;
+            // 
+            // btnK
+            // 
+            btnK.BackColor = Color.Brown;
+            btnK.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnK.ForeColor = SystemColors.ButtonHighlight;
+            btnK.Location = new Point(429, 85);
+            btnK.Margin = new Padding(3, 2, 3, 2);
+            btnK.Name = "btnK";
+            btnK.Size = new Size(48, 49);
+            btnK.TabIndex = 47;
+            btnK.Text = "K";
+            btnK.UseVisualStyleBackColor = false;
+            btnK.Click += btnTeclado_Click;
+            // 
+            // btnS
+            // 
+            btnS.BackColor = Color.Brown;
+            btnS.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnS.ForeColor = SystemColors.ButtonHighlight;
+            btnS.Location = new Point(101, 82);
+            btnS.Margin = new Padding(3, 2, 3, 2);
+            btnS.Name = "btnS";
+            btnS.Size = new Size(48, 49);
+            btnS.TabIndex = 41;
+            btnS.Text = "S";
+            btnS.UseVisualStyleBackColor = false;
+            btnS.Click += btnTeclado_Click;
+            // 
+            // btnL
+            // 
+            btnL.BackColor = Color.Brown;
+            btnL.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnL.ForeColor = SystemColors.ButtonHighlight;
+            btnL.Location = new Point(483, 82);
+            btnL.Margin = new Padding(3, 2, 3, 2);
+            btnL.Name = "btnL";
+            btnL.Size = new Size(48, 49);
+            btnL.TabIndex = 48;
+            btnL.Text = "L";
+            btnL.UseVisualStyleBackColor = false;
+            btnL.Click += btnTeclado_Click;
+            // 
+            // btnA
+            // 
+            btnA.BackColor = Color.Brown;
+            btnA.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnA.ForeColor = SystemColors.ButtonHighlight;
+            btnA.Location = new Point(47, 82);
+            btnA.Margin = new Padding(3, 2, 3, 2);
+            btnA.Name = "btnA";
+            btnA.Size = new Size(48, 49);
+            btnA.TabIndex = 40;
+            btnA.Text = "A";
+            btnA.UseVisualStyleBackColor = false;
+            btnA.Click += btnTeclado_Click;
+            // 
+            // btnZ
+            // 
+            btnZ.BackColor = Color.Brown;
+            btnZ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnZ.ForeColor = SystemColors.ButtonHighlight;
+            btnZ.Location = new Point(75, 135);
+            btnZ.Margin = new Padding(3, 2, 3, 2);
+            btnZ.Name = "btnZ";
+            btnZ.Size = new Size(48, 49);
+            btnZ.TabIndex = 49;
+            btnZ.Text = "Z";
+            btnZ.UseVisualStyleBackColor = false;
+            btnZ.Click += btnTeclado_Click;
+            // 
+            // btnP
+            // 
+            btnP.BackColor = Color.Brown;
+            btnP.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnP.ForeColor = SystemColors.ButtonHighlight;
+            btnP.Location = new Point(510, 31);
+            btnP.Margin = new Padding(3, 2, 3, 2);
+            btnP.Name = "btnP";
+            btnP.Size = new Size(48, 49);
+            btnP.TabIndex = 39;
+            btnP.Text = "P";
+            btnP.UseVisualStyleBackColor = false;
+            btnP.Click += btnTeclado_Click;
+            // 
+            // btnX
+            // 
+            btnX.BackColor = Color.Brown;
+            btnX.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnX.ForeColor = SystemColors.ButtonHighlight;
+            btnX.Location = new Point(129, 135);
+            btnX.Margin = new Padding(3, 2, 3, 2);
+            btnX.Name = "btnX";
+            btnX.Size = new Size(48, 49);
+            btnX.TabIndex = 50;
+            btnX.Text = "X";
+            btnX.UseVisualStyleBackColor = false;
+            btnX.Click += btnTeclado_Click;
+            // 
+            // btnO
+            // 
+            btnO.BackColor = Color.Brown;
+            btnO.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnO.ForeColor = SystemColors.ButtonHighlight;
+            btnO.Location = new Point(456, 31);
+            btnO.Margin = new Padding(3, 2, 3, 2);
+            btnO.Name = "btnO";
+            btnO.Size = new Size(48, 49);
+            btnO.TabIndex = 38;
+            btnO.Text = "O";
+            btnO.UseVisualStyleBackColor = false;
+            btnO.Click += btnTeclado_Click;
+            // 
+            // btnC
+            // 
+            btnC.BackColor = Color.Brown;
+            btnC.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnC.ForeColor = SystemColors.ButtonHighlight;
+            btnC.Location = new Point(183, 135);
+            btnC.Margin = new Padding(3, 2, 3, 2);
+            btnC.Name = "btnC";
+            btnC.Size = new Size(48, 49);
+            btnC.TabIndex = 51;
+            btnC.Text = "C";
+            btnC.UseVisualStyleBackColor = false;
+            btnC.Click += btnTeclado_Click;
+            // 
+            // btnI
+            // 
+            btnI.BackColor = Color.Brown;
+            btnI.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnI.ForeColor = SystemColors.ButtonHighlight;
+            btnI.Location = new Point(402, 31);
+            btnI.Margin = new Padding(3, 2, 3, 2);
+            btnI.Name = "btnI";
+            btnI.Size = new Size(48, 49);
+            btnI.TabIndex = 37;
+            btnI.Text = "I";
+            btnI.UseVisualStyleBackColor = false;
+            btnI.Click += btnTeclado_Click;
+            // 
+            // btnV
+            // 
+            btnV.BackColor = Color.Brown;
+            btnV.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnV.ForeColor = SystemColors.ButtonHighlight;
+            btnV.Location = new Point(237, 135);
+            btnV.Margin = new Padding(3, 2, 3, 2);
+            btnV.Name = "btnV";
+            btnV.Size = new Size(48, 49);
+            btnV.TabIndex = 52;
+            btnV.Text = "V";
+            btnV.UseVisualStyleBackColor = false;
+            btnV.Click += btnTeclado_Click;
+            // 
+            // btnU
+            // 
+            btnU.BackColor = Color.Brown;
+            btnU.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnU.ForeColor = SystemColors.ButtonHighlight;
+            btnU.Location = new Point(348, 31);
+            btnU.Margin = new Padding(3, 2, 3, 2);
+            btnU.Name = "btnU";
+            btnU.Size = new Size(48, 49);
+            btnU.TabIndex = 36;
+            btnU.Text = "U";
+            btnU.UseVisualStyleBackColor = false;
+            btnU.Click += btnTeclado_Click;
+            // 
+            // btnB
+            // 
+            btnB.BackColor = Color.Brown;
+            btnB.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnB.ForeColor = SystemColors.ButtonHighlight;
+            btnB.Location = new Point(291, 135);
+            btnB.Margin = new Padding(3, 2, 3, 2);
+            btnB.Name = "btnB";
+            btnB.Size = new Size(48, 49);
+            btnB.TabIndex = 53;
+            btnB.Text = "B";
+            btnB.UseVisualStyleBackColor = false;
+            btnB.Click += btnTeclado_Click;
+            // 
+            // btnY
+            // 
+            btnY.BackColor = Color.Brown;
+            btnY.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnY.ForeColor = SystemColors.ButtonHighlight;
+            btnY.Location = new Point(294, 31);
+            btnY.Margin = new Padding(3, 2, 3, 2);
+            btnY.Name = "btnY";
+            btnY.Size = new Size(48, 49);
+            btnY.TabIndex = 35;
+            btnY.Text = "Y";
+            btnY.UseVisualStyleBackColor = false;
+            btnY.Click += btnTeclado_Click;
+            // 
+            // btnN
+            // 
+            btnN.BackColor = Color.Brown;
+            btnN.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnN.ForeColor = SystemColors.ButtonHighlight;
+            btnN.Location = new Point(348, 135);
+            btnN.Margin = new Padding(3, 2, 3, 2);
+            btnN.Name = "btnN";
+            btnN.Size = new Size(48, 49);
+            btnN.TabIndex = 54;
+            btnN.Text = "N";
+            btnN.UseVisualStyleBackColor = false;
+            btnN.Click += btnTeclado_Click;
+            // 
+            // btnT
+            // 
+            btnT.BackColor = Color.Brown;
+            btnT.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnT.ForeColor = SystemColors.ButtonHighlight;
+            btnT.Location = new Point(240, 31);
+            btnT.Margin = new Padding(3, 2, 3, 2);
+            btnT.Name = "btnT";
+            btnT.Size = new Size(48, 49);
+            btnT.TabIndex = 34;
+            btnT.Text = "T";
+            btnT.UseVisualStyleBackColor = false;
+            btnT.Click += btnTeclado_Click;
+            // 
+            // btnM
+            // 
+            btnM.BackColor = Color.Brown;
+            btnM.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnM.ForeColor = SystemColors.ButtonHighlight;
+            btnM.Location = new Point(402, 135);
+            btnM.Margin = new Padding(3, 2, 3, 2);
+            btnM.Name = "btnM";
+            btnM.Size = new Size(48, 49);
+            btnM.TabIndex = 55;
+            btnM.Text = "M";
+            btnM.UseVisualStyleBackColor = false;
+            btnM.Click += btnTeclado_Click;
+            // 
+            // btnR
+            // 
+            btnR.BackColor = Color.Brown;
+            btnR.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnR.ForeColor = SystemColors.ButtonHighlight;
+            btnR.Location = new Point(186, 31);
+            btnR.Margin = new Padding(3, 2, 3, 2);
+            btnR.Name = "btnR";
+            btnR.Size = new Size(48, 49);
+            btnR.TabIndex = 33;
+            btnR.Text = "R";
+            btnR.UseVisualStyleBackColor = false;
+            btnR.Click += btnTeclado_Click;
+            // 
+            // btnE
+            // 
+            btnE.BackColor = Color.Brown;
+            btnE.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnE.ForeColor = SystemColors.ButtonHighlight;
+            btnE.Location = new Point(132, 31);
+            btnE.Margin = new Padding(3, 2, 3, 2);
+            btnE.Name = "btnE";
+            btnE.Size = new Size(48, 49);
+            btnE.TabIndex = 32;
+            btnE.Text = "E";
+            btnE.UseVisualStyleBackColor = false;
+            btnE.Click += btnTeclado_Click;
+            // 
+            // bntBackSpace
+            // 
+            bntBackSpace.BackColor = Color.IndianRed;
+            bntBackSpace.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            bntBackSpace.ForeColor = SystemColors.ButtonHighlight;
+            bntBackSpace.Location = new Point(554, 85);
+            bntBackSpace.Margin = new Padding(3, 2, 3, 2);
+            bntBackSpace.Name = "bntBackSpace";
+            bntBackSpace.Size = new Size(48, 49);
+            bntBackSpace.TabIndex = 57;
+            bntBackSpace.Text = "<=";
+            bntBackSpace.UseVisualStyleBackColor = false;
+            bntBackSpace.Click += bntBackSpace_Click;
+            // 
+            // btnW
+            // 
+            btnW.BackColor = Color.Brown;
+            btnW.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnW.ForeColor = SystemColors.ButtonHighlight;
+            btnW.Location = new Point(78, 31);
+            btnW.Margin = new Padding(3, 2, 3, 2);
+            btnW.Name = "btnW";
+            btnW.Size = new Size(48, 49);
+            btnW.TabIndex = 31;
+            btnW.Text = "W";
+            btnW.UseVisualStyleBackColor = false;
+            btnW.Click += btnTeclado_Click;
+            // 
+            // btnENTER
+            // 
+            btnENTER.BackColor = Color.IndianRed;
+            btnENTER.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnENTER.ForeColor = SystemColors.ButtonHighlight;
+            btnENTER.Location = new Point(483, 138);
+            btnENTER.Margin = new Padding(3, 2, 3, 2);
+            btnENTER.Name = "btnENTER";
+            btnENTER.Size = new Size(119, 49);
+            btnENTER.TabIndex = 58;
+            btnENTER.Text = "ENTER";
+            btnENTER.UseVisualStyleBackColor = false;
+            btnENTER.Click += btnEnter_Click;
+            // 
+            // BtnQ
+            // 
+            BtnQ.BackColor = Color.Brown;
+            BtnQ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            BtnQ.ForeColor = SystemColors.ButtonHighlight;
+            BtnQ.Location = new Point(24, 31);
+            BtnQ.Margin = new Padding(3, 2, 3, 2);
+            BtnQ.Name = "BtnQ";
+            BtnQ.Size = new Size(48, 49);
+            BtnQ.TabIndex = 30;
+            BtnQ.Text = "Q";
+            BtnQ.UseVisualStyleBackColor = false;
+            BtnQ.Click += btnTeclado_Click;
+            // 
+            // btnJ
+            // 
+            btnJ.BackColor = Color.Brown;
+            btnJ.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold);
+            btnJ.ForeColor = SystemColors.ButtonHighlight;
+            btnJ.Location = new Point(375, 82);
+            btnJ.Margin = new Padding(3, 2, 3, 2);
+            btnJ.Name = "btnJ";
+            btnJ.Size = new Size(48, 49);
+            btnJ.TabIndex = 46;
+            btnJ.Text = "J";
+            btnJ.UseVisualStyleBackColor = false;
+            btnJ.Click += btnTeclado_Click;
+            // 
+            // btnReiniciar
+            // 
+            btnReiniciar.BackColor = Color.LightCoral;
+            btnReiniciar.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReiniciar.ForeColor = SystemColors.ButtonHighlight;
+            btnReiniciar.Location = new Point(24, 209);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(578, 48);
+            btnReiniciar.TabIndex = 59;
+            btnReiniciar.Text = "REINICIAR";
+            btnReiniciar.UseVisualStyleBackColor = false;
+            btnReiniciar.Click += btnReiniciar_Click;
+            // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(btnReiniciar);
             groupBox2.Controls.Add(btnJ);
             groupBox2.Controls.Add(BtnQ);
             groupBox2.Controls.Add(btnENTER);
             groupBox2.Controls.Add(btnW);
-            groupBox2.Controls.Add(bntBACKSPACE);
+            groupBox2.Controls.Add(bntBackSpace);
             groupBox2.Controls.Add(btnE);
             groupBox2.Controls.Add(btnR);
             groupBox2.Controls.Add(btnM);
@@ -913,20 +1002,22 @@
             groupBox2.Controls.Add(btnF);
             groupBox2.Controls.Add(btnH);
             groupBox2.Controls.Add(btnG);
-            groupBox2.Location = new Point(8, 513);
+            groupBox2.Location = new Point(35, 652);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
-            groupBox2.Size = new Size(631, 209);
+            groupBox2.Size = new Size(631, 273);
             groupBox2.TabIndex = 60;
             groupBox2.TabStop = false;
             // 
             // Form1
             // 
+            AcceptButton = btnENTER;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
-            ClientSize = new Size(647, 731);
+            ClientSize = new Size(706, 960);
+            Controls.Add(MensNaoAceito);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             ForeColor = SystemColors.ControlLightLight;
@@ -972,36 +1063,38 @@
         private Button btn63;
         private Button btn62;
         private Button btn61;
-        private Button BtnQ;
-        private Button btnW;
-        private Button btnE;
-        private Button btnR;
-        private Button btnT;
-        private Button btnP;
-        private Button btnO;
-        private Button btnI;
-        private Button btnU;
-        private Button btnY;
+        private GroupBox groupBox1;
+        private Button btn11;
+        private Label MensNaoAceito;
         private Button btnG;
+        private Button btnH;
         private Button btnF;
         private Button btnD;
-        private Button btnS;
-        private Button btnA;
-        private Button btnL;
         private Button btnK;
-        private Button btnJ;
-        private Button btnH;
-        private Button btnM;
-        private Button btnN;
-        private Button btnB;
-        private Button btnV;
-        private Button btnC;
-        private Button btnX;
+        private Button btnS;
+        private Button btnL;
+        private Button btnA;
         private Button btnZ;
-        private Button bntBACKSPACE;
+        private Button btnP;
+        private Button btnX;
+        private Button btnO;
+        private Button btnC;
+        private Button btnI;
+        private Button btnV;
+        private Button btnU;
+        private Button btnB;
+        private Button btnY;
+        private Button btnN;
+        private Button btnT;
+        private Button btnM;
+        private Button btnR;
+        private Button btnE;
+        private Button bntBackSpace;
+        private Button btnW;
         private Button btnENTER;
-        private GroupBox groupBox1;
+        private Button BtnQ;
+        private Button btnJ;
+        private Button btnReiniciar;
         private GroupBox groupBox2;
-        private Button btn11;
     }
 }
