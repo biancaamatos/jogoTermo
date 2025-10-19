@@ -16,13 +16,6 @@ namespace TermoApp
         public Form1()
         {
             InitializeComponent();
-
-            // Modo tela cheia total
-            this.FormBorderStyle = FormBorderStyle.None;  // sem borda
-            this.WindowState = FormWindowState.Maximized; // ocupa toda a tela
-            this.TopMost = true;
-
-            InitializeComponent();
             termo = new Termo();
             EfeitoSelecionado();
 
@@ -176,11 +169,9 @@ namespace TermoApp
                 }
             }
 
-            // Executa a animação de reinício em todos os botões do tabuleiro ao mesmo tempo
             var tasksTabuleiro = botoesTabuleiro.Select(b => AnimaReiniciarPadronizado(b));
             await Task.WhenAll(tasksTabuleiro);
 
-            // Garante que o estado visual dos botões do tabuleiro seja o inicial
             foreach (var botao in botoesTabuleiro)
             {
                 botao.BackColor = Color.Brown;
@@ -438,7 +429,5 @@ namespace TermoApp
             botao.BackColor = Color.Brown;
             botao.ForeColor = SystemColors.ButtonHighlight; // garante letra branca
         }
-
-
     }
 }
