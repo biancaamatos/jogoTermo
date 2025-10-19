@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using TermoLib;
+using System.Net.Http;      // Adicionado para carregar palavras online
+using System.Threading.Tasks; // Adicionado para operações online
 
 namespace TermoLib
 {
@@ -21,6 +22,7 @@ namespace TermoLib
     {
         private static Random rdn = new Random();
 
+        // --- CORREÇÃO DO ERRO 'var' APLICADA AQUI ---
         public List<string> palavras;
         public string palavraSorteada;
         public List<List<Letra>> tabuleiro;
@@ -29,7 +31,9 @@ namespace TermoLib
 
         public Termo()
         {
-            CarregaPalavras("Palavras.txt");
+            // Tenta carregar as palavras da URL. O .Wait() é usado para esperar a conclusão.
+            CarregaPalavrasOnline("https://raw.githubusercontent.com/pythonprobr/palavras/master/palavras.txt").Wait();
+
             SorteiaPalavra();
             palavraAtual = 1;
             tabuleiro = new List<List<Letra>>();
@@ -37,6 +41,27 @@ namespace TermoLib
             for (int i = 'A'; i <= 'Z'; i++)
             {
                 teclado.Add((char)i, 'C');
+            }
+        }
+
+        // --- FUNCIONALIDADE 9: Importar palavras online ---
+        public async Task CarregaPalavrasOnline(string url)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string palavrasDaWeb = await client.GetStringAsync(url);
+                    palavras = palavrasDaWeb.Split('\n')
+                                            .Where(p => p.Length == 5)
+                                            .Select(p => p.ToUpper().Trim())
+                                            .ToList();
+                }
+            }
+            catch (Exception)
+            {
+                // Se falhar, carrega do arquivo local como um fallback.
+                CarregaPalavras("Palavras.txt");
             }
         }
 
@@ -48,6 +73,7 @@ namespace TermoLib
             }
             catch (Exception)
             {
+                // Se o arquivo local também falhar, usa uma lista padrão.
                 palavras = new List<string> { "TERMO", "JOGAR", "LETRA", "IDEIA", "LIVRO" };
             }
         }
@@ -58,10 +84,20 @@ namespace TermoLib
             palavraSorteada = palavras[rdn.Next(0, palavras.Count)];
         }
 
-        public void ChecaPalavra(string palavra)
+        // --- FUNCIONALIDADES 7 e 8: Validação de palavras ---
+        public bool ChecaPalavra(string palavra)
         {
-            if (string.IsNullOrEmpty(palavraSorteada)) return;
-            if (palavra.Length != 5) return;
+            if (string.IsNullOrEmpty(palavraSorteada)) return false;
+
+            if (palavra.Length != 5)
+            {
+                return false; // Valida se a palavra tem 5 letras
+            }
+
+            if (!palavras.Contains(palavra.ToUpper()))
+            {
+                return false; // Valida se a palavra existe na lista
+            }
 
             var palavraTabuleiro = new List<Letra>();
             char[] letrasRestantes = palavraSorteada.ToCharArray();
@@ -109,6 +145,8 @@ namespace TermoLib
             }
             tabuleiro.Add(palavraTabuleiro);
             palavraAtual++;
+
+            return true;
         }
     }
 }

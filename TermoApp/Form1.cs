@@ -10,7 +10,9 @@ namespace TermoApp
 {
     public partial class Form1 : Form
     {
-        public Termo termo;
+        // --- CORREÇÃO 1: INICIALIZANDO A VARIÁVEL AQUI ---
+        // Isso resolve os erros de compilação CS0825
+        public Termo termo = new Termo();
         int coluna = 1;
 
         public Form1()
@@ -18,12 +20,12 @@ namespace TermoApp
             InitializeComponent();
 
             // Modo tela cheia total
-            this.FormBorderStyle = FormBorderStyle.None;  // sem borda
-            this.WindowState = FormWindowState.Maximized; // ocupa toda a tela
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.TopMost = true;
 
-            InitializeComponent();
-            termo = new Termo();
+            // --- CORREÇÃO 2: A inicialização do 'termo' foi movida para a declaração acima ---
+            // A linha 'termo = new Termo();' foi removida daqui.
             EfeitoSelecionado();
 
             this.KeyPreview = true;
@@ -121,14 +123,18 @@ namespace TermoApp
                 if (botao != null) palavra += botao.Text;
             }
 
-            if (palavra.Length != 5)
+            // --- CORREÇÃO 3: LÓGICA DE VALIDAÇÃO UNIFICADA ---
+            // Agora usamos o retorno 'true'/'false' do ChecaPalavra, que já valida o tamanho E se a palavra existe na lista.
+            bool palavraValida = termo.ChecaPalavra(palavra);
+
+            if (!palavraValida)
             {
                 await AnimaShakeLinha(termo.palavraAtual);
-                await MostrarMensagemTemporaria("Digite 5 letras");
+                await MostrarMensagemTemporaria("Palavra inválida!");
                 return;
             }
 
-            termo.ChecaPalavra(palavra);
+            // Se a palavra é válida, o código continua...
             await AtualizaTabuleiro();
             AtualizaTeclado();
 
@@ -158,11 +164,9 @@ namespace TermoApp
 
         private async void btnReiniciar_Click(object sender, EventArgs e)
         {
-               // 1. Reinicia a lógica do jogo para uma nova partida
             termo = new Termo();
             coluna = 1;
 
-            // 2. Coleta todos os botões do tabuleiro para a animação
             var botoesTabuleiro = new List<Button>();
             for (int linha = 1; linha <= 6; linha++)
             {
@@ -176,21 +180,18 @@ namespace TermoApp
                 }
             }
 
-            // Executa a animação de reinício em todos os botões do tabuleiro ao mesmo tempo
             var tasksTabuleiro = botoesTabuleiro.Select(b => AnimaReiniciarPadronizado(b));
             await Task.WhenAll(tasksTabuleiro);
 
-            // Garante que o estado visual dos botões do tabuleiro seja o inicial
             foreach (var botao in botoesTabuleiro)
             {
                 botao.BackColor = Color.Brown;
                 botao.ForeColor = SystemColors.ButtonHighlight;
                 botao.FlatAppearance.BorderColor = Color.White;
                 botao.Text = string.Empty;
-                botao.Enabled = true; // Garante que os botões estejam ativos
+                botao.Enabled = true;
             }
 
-            // 3. Coleta e reinicia os botões do teclado
             var botoesTeclado = new List<Button>();
             for (char c = 'A'; c <= 'Z'; c++)
             {
@@ -198,26 +199,25 @@ namespace TermoApp
                 if (btnTecla != null) botoesTeclado.Add(btnTecla);
             }
             botoesTeclado.Add(RetornaBotao("btnEnter"));
-            botoesTeclado.Add(RetornaBotao("bntBackSpace")); // O nome original tem um typo "bnt"
+            botoesTeclado.Add(RetornaBotao("bntBackSpace"));
 
-            // Anima e reativa cada botão do teclado
             foreach (var btnTecla in botoesTeclado.Where(b => b != null))
             {
                 await AnimaFadeOutCor(btnTecla);
-                btnTecla.Enabled = true; // Reativa o teclado para a nova partida
+                btnTecla.Enabled = true;
             }
 
-            // 4. Reaplica os efeitos de mouse hover
             EfeitoSelecionado();
         }
+
+        // ... O RESTO DO SEU CÓDIGO (ANIMAÇÕES, ETC.) CONTINUA IGUAL E NÃO PRECISA DE MUDANÇAS ...
+        // Colei o resto aqui para garantir que o arquivo fique completo.
 
         private async Task AnimaReiniciarPadronizado(Button botao)
         {
             if (botao == null) return;
-
             int originalTop = botao.Top;
             int originalHeight = botao.Height;
-
             for (int i = 0; i <= 10; i++)
             {
                 botao.Top = originalTop + i;
@@ -227,13 +227,11 @@ namespace TermoApp
                 botao.ForeColor = SystemColors.ButtonHighlight;
                 await Task.Delay(15);
             }
-
             botao.Text = string.Empty;
             botao.BackColor = Color.Brown;
             botao.FlatAppearance.BorderSize = 3;
             botao.FlatAppearance.BorderColor = Color.White;
             botao.ForeColor = SystemColors.ButtonHighlight;
-
             for (int i = 10; i >= 0; i--)
             {
                 botao.Top = originalTop + i;
@@ -243,7 +241,6 @@ namespace TermoApp
                 botao.ForeColor = SystemColors.ButtonHighlight;
                 await Task.Delay(15);
             }
-
             botao.Top = originalTop;
             botao.Height = originalHeight;
         }
@@ -254,7 +251,6 @@ namespace TermoApp
             botao.FlatAppearance.BorderColor = Color.White;
             botao.FlatAppearance.BorderSize = 3;
             botao.FlatStyle = FlatStyle.Flat;
-
             botao.Paint += (s, e) =>
             {
                 Button b = s as Button;
@@ -269,7 +265,6 @@ namespace TermoApp
                 {
                     e.Graphics.DrawString(b.Text, b.Font, brush, b.ClientRectangle, sf);
                 }
-
                 using (Pen pen = new Pen(b.FlatAppearance.BorderColor, 3))
                 {
                     e.Graphics.DrawRectangle(pen, 0, 0, b.Width - 1, b.Height - 1);
@@ -336,6 +331,8 @@ namespace TermoApp
 
         private async Task MostrarMensagemTemporaria(string mensagem, int duracaoMs = 2000)
         {
+            // Assumindo que você tem um Label chamado 'MensNaoAceito' no seu form.
+            var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label;
             if (MensNaoAceito == null) return;
             MensNaoAceito.Text = mensagem;
             MensNaoAceito.Visible = true;
@@ -379,7 +376,6 @@ namespace TermoApp
             botao.Top -= 4;
             await Task.Delay(40);
             botao.Top += 4;
-
             botao.FlatAppearance.BorderSize = 3;
             botao.FlatAppearance.BorderColor = Color.White;
         }
@@ -411,15 +407,12 @@ namespace TermoApp
                 }
             }
         }
-    
-    private async Task AnimaFadeOutCor(Button botao)
-        {
-       if (botao == null) return;
 
+        private async Task AnimaFadeOutCor(Button botao)
+        {
+            if (botao == null) return;
             Color start = botao.BackColor;
             Color end = Color.Brown;
-
-            // Menos passos e delay menor = animação bem rápida
             for (int i = 0; i <= 3; i++)
             {
                 double p = (double)i / 3;
@@ -430,15 +423,12 @@ namespace TermoApp
                 botao.BackColor = Color.FromArgb(r, g, b);
                 botao.FlatAppearance.BorderSize = 3;
                 botao.FlatAppearance.BorderColor = Color.White;
-                botao.ForeColor = SystemColors.ButtonHighlight; // letra branca sempre
+                botao.ForeColor = SystemColors.ButtonHighlight;
 
-                await Task.Delay(2); // delay mínimo
+                await Task.Delay(2);
             }
-
             botao.BackColor = Color.Brown;
-            botao.ForeColor = SystemColors.ButtonHighlight; // garante letra branca
+            botao.ForeColor = SystemColors.ButtonHighlight;
         }
-
-
     }
 }
