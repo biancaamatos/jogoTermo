@@ -90,6 +90,8 @@
             btnJ = new Button();
             btnReiniciar = new Button();
             groupBox2 = new GroupBox();
+            label1 = new Label();
+            btnPlacar = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -546,7 +548,7 @@
             groupBox1.Controls.Add(btn63);
             groupBox1.Controls.Add(btn64);
             groupBox1.Controls.Add(btn65);
-            groupBox1.Location = new Point(146, 152);
+            groupBox1.Location = new Point(152, 137);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
@@ -559,7 +561,7 @@
             MensNaoAceito.BackColor = Color.Snow;
             MensNaoAceito.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             MensNaoAceito.ForeColor = Color.DarkRed;
-            MensNaoAceito.Location = new Point(164, 86);
+            MensNaoAceito.Location = new Point(170, 90);
             MensNaoAceito.Name = "MensNaoAceito";
             MensNaoAceito.Size = new Size(370, 42);
             MensNaoAceito.TabIndex = 61;
@@ -1002,13 +1004,35 @@
             groupBox2.Controls.Add(btnF);
             groupBox2.Controls.Add(btnH);
             groupBox2.Controls.Add(btnG);
-            groupBox2.Location = new Point(35, 652);
+            groupBox2.Location = new Point(41, 637);
             groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(3, 2, 3, 2);
             groupBox2.Size = new Size(631, 273);
             groupBox2.TabIndex = 60;
             groupBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(289, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(127, 41);
+            label1.TabIndex = 62;
+            label1.Text = "TERMO";
+            // 
+            // btnPlacar
+            // 
+            btnPlacar.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnPlacar.ForeColor = Color.IndianRed;
+            btnPlacar.Location = new Point(621, 20);
+            btnPlacar.Name = "btnPlacar";
+            btnPlacar.Size = new Size(73, 29);
+            btnPlacar.TabIndex = 63;
+            btnPlacar.Text = "Placar";
+            btnPlacar.UseVisualStyleBackColor = true;
+            btnPlacar.Click += btnPlacar_Click;
             // 
             // Form1
             // 
@@ -1017,6 +1041,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
             ClientSize = new Size(706, 960);
+            Controls.Add(btnPlacar);
+            Controls.Add(label1);
             Controls.Add(MensNaoAceito);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -1029,6 +1055,7 @@
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1096,5 +1123,7 @@
         private Button btnJ;
         private Button btnReiniciar;
         private GroupBox groupBox2;
+        private Label label1;
+        private Button btnPlacar;
     }
 }
