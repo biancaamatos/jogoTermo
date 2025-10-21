@@ -19,8 +19,10 @@ namespace TermoLib
     {
         private static Random rdn = new Random();
 
+        // Dicionário usado para validação das palavras inseridas pelo jogador
         public List<string> Dicionario;
 
+        // Lista para as palavras que serão sorteadas no jogo (Palavras.txt)
         private List<string> Palavras;
 
         public string palavraSorteada;
@@ -39,15 +41,19 @@ namespace TermoLib
 
             try
             {
+                // Carrega Dicionario.txt (obrigatório para validação).
                 CarregaDicionario("Dicionario.txt");
 
+                // Carrega Palavras.txt (apenas para sorteio).
                 CarregaPalavrasSorteio("Palavras.txt");
 
+                // Se o dicionário não foi encontrado, mantemos um fallback mínimo embutido.
                 if (Palavras.Count == 0)
                 {
                     Palavras = new List<string> { "TERMO", "JOGAR", "LETRA", "IDEIA", "LIVRO" };
                 }
 
+                // Se não houver lista de sorteio, usamos o dicionário como último recurso.
                 if (Dicionario.Count == 0)
                 {
                     Dicionario = new List<string>(Palavras);
@@ -60,6 +66,7 @@ namespace TermoLib
             }
         }
 
+        // IniciarAsync só garante carregamento adicional se necessário e sorteia a palavra.
         public async Task IniciarAsync()
         {
             await Task.Run(() =>
@@ -246,6 +253,7 @@ namespace TermoLib
             return cleaned;
         }
 
+        // Sorteia usando EXCLUSIVAMENTE palavrasSorteio quando disponível
         public void SorteiaPalavra()
         {
             var source = (Dicionario != null && Dicionario.Count > 0) ? Dicionario : Palavras;
@@ -253,6 +261,7 @@ namespace TermoLib
             palavraSorteada = source[rdn.Next(0, source.Count)];
         }
 
+        // Validação da palavra do jogador: normaliza e verifica existência no Dicionario (palavras).
         public bool ChecaPalavra(string palavra)
         {
             if (string.IsNullOrWhiteSpace(palavra)) return false;
@@ -305,6 +314,7 @@ namespace TermoLib
             return true;
         }
 
+        // Método auxiliar público para diagnóstico: verifica se uma palavra está no dicionário normalizada.
         public bool EstaNoDicionario(string palavra)
         {
             if (string.IsNullOrWhiteSpace(palavra)) return false;
@@ -312,6 +322,7 @@ namespace TermoLib
             return Palavras.Contains(p);
         }
 
+        // Método auxiliar público para diagnóstico: retorna a quantidade de palavras carregadas
         public int DicionarioCount() => Palavras?.Count ?? 0;
     }
 }

@@ -9,6 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Sons\click.wav" />
+    <None Remove="Sons\deletar.wav" />
+    <None Remove="Sons\derrota.wav" />
+    <None Remove="Sons\enter.wav" />
+    <None Remove="Sons\vitoria.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Sons\click.wav" />
+    <EmbeddedResource Include="Sons\deletar.wav" />
+    <EmbeddedResource Include="Sons\derrota.wav" />
+    <EmbeddedResource Include="Sons\enter.wav" />
+    <EmbeddedResource Include="Sons\vitoria.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TermoLib\TermoLib.csproj" />
   </ItemGroup>
 
