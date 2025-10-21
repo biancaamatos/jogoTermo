@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic; // Adicionado para IReadOnlyList (necessário para StatsManager)
 
 namespace TermoApp
 {
@@ -20,10 +21,10 @@ namespace TermoApp
         // controles
         private Label lblTitle;
         private Label lblWins, lblLosses, lblTotal, lblBestStreak;
-        private TableLayoutPanel barsTable;
+        // private TableLayoutPanel barsTable; // REMOVIDO
         private Button btnReset, btnClose;
         private TableLayoutPanel mainLayout;
-                
+
         public FormTabela()
         {
             Text = "Placar";
@@ -31,25 +32,25 @@ namespace TermoApp
             StartPosition = FormStartPosition.CenterParent;
             BackColor = Bg;
             ForeColor = Color.White;
-            ClientSize = new Size(460, 560);
+            // --- TAMANHO AJUSTADO PARA FICAR MAIS COMPACTO ---
+            ClientSize = new Size(460, 240);
             MinimizeBox = false;
             MaximizeBox = false;
 
             InitializeComponents();
 
-            // atualiza após carregar e também ao redimensionar
+            // atualiza após carregar
             this.Load += (s, e) => { RefreshStats(); };
-            this.Resize += (s, e) => { RefreshStats(); };
         }
 
         private void InitializeComponents()
         {
-            // Layout: header / stats / spacer / bars title / bars panel / buttons
+            // Layout: header / stats / buttons
             mainLayout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 ColumnCount = 1,
-                RowCount = 6,
+                RowCount = 3, // --- ALTERADO de 6 para 3 ---
                 Padding = new Padding(8),
                 BackColor = Color.Transparent,
                 AutoSize = false
@@ -57,10 +58,7 @@ namespace TermoApp
 
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));   // header
             mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 96F));   // stats
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 12F));   // spacer
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));   // bars title
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));   // bars panel (usa todo espaço disponível)
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));   // buttons
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));  // botões (ocupa o resto)
             Controls.Add(mainLayout);
 
             // header
@@ -76,7 +74,7 @@ namespace TermoApp
             header.Controls.Add(lblTitle);
             mainLayout.Controls.Add(header, 0, 0);
 
-            // STATS: 3 cartões principais (Vitórias, Derrotas, Partidas) + Melhor sequência
+            // STATS
             var statsTable = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -85,12 +83,12 @@ namespace TermoApp
                 Padding = new Padding(6),
                 BackColor = Color.Transparent
             };
-            for (int c = 0; c < 4; c++) statsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            for (int c = 0; c < 4; c++) statsTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
 
             var cardWin = CreateStatCard("Vitórias", out lblWins, Success);
             var cardLoss = CreateStatCard("Derrotas", out lblLosses, Danger);
             var cardTotal = CreateStatCard("Partidas", out lblTotal, Color.LightSteelBlue);
-            var cardBest = CreateStatCard("Melhor sequência", out lblBestStreak, Highlight);
+            var cardBest = CreateStatCard("Sequência", out lblBestStreak, Highlight);
 
             statsTable.Controls.Add(cardWin, 0, 0);
             statsTable.Controls.Add(cardLoss, 1, 0);
@@ -99,42 +97,7 @@ namespace TermoApp
 
             mainLayout.Controls.Add(statsTable, 0, 1);
 
-            // spacer
-            var spacer = new Panel { Dock = DockStyle.Fill, BackColor = Color.Transparent };
-            mainLayout.Controls.Add(spacer, 0, 2);
-
-            // bars title
-            var barsTitle = new Label
-            {
-                Text = "Distribuição de tentativas",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = CardText,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleLeft,
-                Padding = new Padding(8, 6, 0, 0)
-            };
-            mainLayout.Controls.Add(barsTitle, 0, 3);
-
-            // PAINEL DE BARRAS: TableLayoutPanel com 6 linhas uniformes
-            barsTable = new TableLayoutPanel
-            {
-                Dock = DockStyle.Fill,
-                ColumnCount = 1,
-                RowCount = 6,
-                BackColor = Color.Transparent,
-                Padding = new Padding(8),
-                Margin = new Padding(0)
-            };
-            const float rowHeight = 48F; // altura uniforme por linha
-            for (int r = 0; r < 6; r++) barsTable.RowStyles.Add(new RowStyle(SizeType.Absolute, rowHeight));
-            for (int i = 1; i <= 6; i++)
-            {
-                var row = CreateBarRowUniform(i);
-                row.Dock = DockStyle.Fill;
-                barsTable.Controls.Add(row, 0, i - 1);
-            }
-            mainLayout.Controls.Add(barsTable, 0, 4);
-
+           
             // botões
             var btnPanel = new FlowLayoutPanel
             {
@@ -149,71 +112,12 @@ namespace TermoApp
             btnReset.Click += BtnReset_Click;
             btnPanel.Controls.Add(btnClose);
             btnPanel.Controls.Add(btnReset);
-            mainLayout.Controls.Add(btnPanel, 0, 5);
+
+            // --- ALTERADO: Posição dos botões movida para a linha 2 ---
+            mainLayout.Controls.Add(btnPanel, 0, 2);
         }
 
-        // Cria uma linha de barra como TableLayoutPanel (col0=index, col1=bg)
-        // OverlayLabel dentro do bg mostra o count (1..N) e índice à esquerda continua visível
-        private TableLayoutPanel CreateBarRowUniform(int index)
-        {
-            var rowTable = new TableLayoutPanel
-            {
-                ColumnCount = 2,
-                RowCount = 1,
-                Dock = DockStyle.Fill,
-                Margin = new Padding(0)
-            };
-            rowTable.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 44F)); // índice
-            rowTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F)); // barra (preenchimento)
-
-            var lblIndex = new Label
-            {
-                Text = index.ToString(),
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
-                ForeColor = CardText,
-                Dock = DockStyle.Fill,
-                TextAlign = ContentAlignment.MiddleCenter,
-                Padding = new Padding(0)
-            };
-
-            var bg = new Panel { Dock = DockStyle.Fill, BackColor = Color.FromArgb(235, 233, 232), Margin = new Padding(6, 8, 6, 8) };
-            bg.Paint += (s, e) => DrawRounded(e.Graphics, bg.ClientRectangle, 8, bg.BackColor, Color.Transparent);
-
-            // overlay no bg (vai mostrar a quantidade de vezes — ex.: 1,2,3...)
-            var lblOverlay = new Label
-            {
-                Text = "0",
-                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(90, 90, 90),
-                BackColor = Color.Transparent,
-                Dock = DockStyle.Right,
-                Width = 56,
-                TextAlign = ContentAlignment.MiddleRight,
-                Padding = new Padding(0, 0, 8, 0)
-            };
-            bg.Controls.Add(lblOverlay);
-
-            // barra interna (filho do bg) — adicionada depois para ficar na frente
-            var bar = new Panel { BackColor = Highlight, Height = 28, Width = 16, Dock = DockStyle.Left };
-            bar.Margin = new Padding(0);
-            bar.Paint += (s, e) =>
-            {
-                var r = bar.ClientRectangle;
-                using (var brush = new LinearGradientBrush(r, ControlPaint.Light(Highlight, 0.12f), ControlPaint.Dark(Highlight, 0.05f), LinearGradientMode.Horizontal))
-                    e.Graphics.FillRectangle(brush, r);
-            };
-            bg.Controls.Add(bar);
-
-            // garantir overlay visível inicialmente; RefreshStats ajusta cor quando coberto
-            lblOverlay.BringToFront();
-
-            rowTable.Controls.Add(lblIndex, 0, 0);
-            rowTable.Controls.Add(bg, 1, 0);
-
-            // Tag guarda referências: (barPanel, bgPanel, overlayLabel)
-            rowTable.Tag = Tuple.Create(bar, bg, lblOverlay);
-            return rowTable;
-        }
+        // --- MÉTODO CreateBarRowUniform REMOVIDO ---
 
         private Button MakeButton(string text, Color actionColor)
         {
@@ -304,12 +208,10 @@ namespace TermoApp
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(this, "Deseja realmente limpar o placar?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
                 StatsManager.Reset();
                 RefreshStats();
             }
-        }
+        
 
         // Atualiza UI com dados atuais
         private void RefreshStats()
@@ -324,41 +226,6 @@ namespace TermoApp
             lblLosses.Text = losses.ToString();
             lblTotal.Text = total.ToString();
             lblBestStreak.Text = best.ToString();
-
-            // distribuição
-            int[] distro = new int[6];
-            foreach (var a in attempts) if (a >= 1 && a <= 6) distro[a - 1]++;
-
-            int max = Math.Max(1, distro.Max());
-
-            // recalcula barras; cada linha é um TableLayoutPanel com Tag = (bar, bg, overlayLabel)
-            for (int i = 0; i < barsTable.Controls.Count; i++)
-            {
-                if (barsTable.Controls[i] is TableLayoutPanel row && row.Tag is Tuple<Panel, Panel, Label> tup)
-                {
-                    var bar = tup.Item1;
-                    var bg = tup.Item2;
-                    var lblOverlay = tup.Item3;
-                    int count = distro[i];
-                    lblOverlay.Text = count.ToString();
-
-                    // ajusta largura da barra
-                    int bgWidth = Math.Max(80, bg.ClientSize.Width - 24);
-                    int target = (int)((double)count / max * bgWidth);
-                    bar.Width = Math.Max(12, target);
-
-                    // se a barra cobrir o overlay, deixa o overlay claro (contraste), caso contrário padrão escuro
-                    int overlayRightX = bg.ClientSize.Width - lblOverlay.Width - 8;
-                    int barRightX = bar.Width;
-                    if (barRightX >= overlayRightX)
-                        lblOverlay.ForeColor = Color.White;
-                    else
-                        lblOverlay.ForeColor = CardText;
-
-                    // garante overlay na frente para legibilidade
-                    lblOverlay.BringToFront();
-                }
-            }
         }
     }
 }

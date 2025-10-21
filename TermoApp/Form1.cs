@@ -58,17 +58,17 @@ namespace TermoApp
 
             if (primeiraVez)
             {
-                // Removido AtualizaSelecaoVisual daqui para evitar seleção inicial indesejada
                 // Garante que a primeira linha tenha borda branca normal ao iniciar
                 for (int i = 1; i <= 5; i++)
                 {
                     var botao = RetornaBotao($"btn1{i}");
                     if (botao != null)
                     {
-                         botao.FlatAppearance.BorderColor = Color.White;
-                         botao.FlatAppearance.BorderSize = 3;
+                        botao.FlatAppearance.BorderColor = Color.White;
+                        botao.FlatAppearance.BorderSize = 3;
                     }
                 }
+                AtualizaSelecaoVisual(); // Chama aqui para a primeira vez
                 return;
             }
 
@@ -118,7 +118,7 @@ namespace TermoApp
                 btnTecla.Enabled = true;
             }
 
-            AtualizaSelecaoVisual(); // Chama após o reinício para a primeira linha ter a seleção
+            AtualizaSelecaoVisual();
         }
 
         private void Tabuleiro_Click(object sender, EventArgs e)
@@ -189,6 +189,8 @@ namespace TermoApp
 
         private async void btnEnter_Click(object sender, EventArgs e)
         {
+            TocarSom("enter.wav"); // Som de Enter
+
             string palavra = "";
             for (int i = 1; i <= 5; i++) { var nomeBotao = $"btn{termo.palavraAtual}{i}"; var botao = RetornaBotao(nomeBotao); if (botao != null) palavra += botao.Text; }
 
@@ -203,7 +205,7 @@ namespace TermoApp
             termo.ChecaPalavra(palavra);
             await AtualizaTabuleiro();
             AtualizaTeclado();
-            
+
             if (palavra == termo.palavraSorteada)
             {
                 TocarSom("vitoria.wav");
@@ -235,12 +237,15 @@ namespace TermoApp
             else if (coluna > 1 && string.IsNullOrEmpty(RetornaBotao($"btn{termo.palavraAtual}{coluna}")?.Text)) { coluna--; }
             var botaoParaApagar = RetornaBotao($"btn{termo.palavraAtual}{coluna}");
             if (botaoParaApagar != null) { botaoParaApagar.Text = string.Empty; }
-            TocarSom("click.wav");
+
+            // --- ALTERAÇÃO AQUI: Som de deletar ---
+            TocarSom("deletar.wav");
+
             AtualizaSelecaoVisual();
         }
-        
+
         #region Código de Animações e Auxiliares
-        
+
         private async Task AnimaLimparLetra(Button botao)
         {
             if (botao == null) return;
@@ -285,7 +290,6 @@ namespace TermoApp
             return (controls.Length > 0) ? (Button)controls[0] : null;
         }
 
-        // --- ANIMAÇÃO DE VIRAR LETRAS ACELERADA E COM BORDA BRANCA ---
         private async Task AtualizaTabuleiro()
         {
             int linhaJogada = termo.tabuleiro.Count; var palavraJogada = termo.tabuleiro[linhaJogada - 1];
@@ -294,67 +298,53 @@ namespace TermoApp
                 var botaoTab = RetornaBotao($"btn{linhaJogada}{col + 1}");
                 if (botaoTab == null || string.IsNullOrEmpty(botaoTab.Text)) continue;
                 Color corFinal = (palavraJogada[col].Cor == 'V') ? Color.Green : (palavraJogada[col].Cor == 'A') ? Color.Yellow : Color.Gray;
-                
-                // Garante borda branca antes de iniciar a animação
+
                 botaoTab.FlatAppearance.BorderSize = 3;
-                botaoTab.FlatAppearance.BorderColor = Color.White; 
-                
-                await Task.Delay(50); // Acelerado
-                await AnimaFlipEstiloTermo(botaoTab, corFinal); // Usa a versão acelerada
-                await Task.Delay(30); // Acelerado
-                
-                // A cor final da borda é definida DENTRO da animação agora
-                // botaoTab.FlatAppearance.BorderColor = Color.White; // Removido daqui
+                botaoTab.FlatAppearance.BorderColor = Color.White;
+
+                await Task.Delay(50);
+                await AnimaFlipEstiloTermo(botaoTab, corFinal);
+                await Task.Delay(30);
             }
         }
         private async Task AnimaFlipEstiloTermo(Button botao, Color corFinal)
         {
             if (botao == null) return;
+            const int delayFlip = 1;
 
-            // --- AQUI! ESTE NÚMERO CONTROLA A VELOCIDADE ---
-            // Quanto MENOR o número, MAIS RÁPIDA a animação.
-            // Atualmente está em 4 (o que já é bem rápido).
-            const int delayFlip = 1; // Experimente diminuir para 3, 2 ou até 1
-
-            // Animação de "encolher" - BORDA BRANCA
             for (int i = 0; i < 10; i++)
             {
                 botao.Top += 2; botao.Height -= 4;
-                botao.FlatAppearance.BorderColor = Color.White; // <<< GARANTE BORDA BRANCA
-                await Task.Delay(delayFlip); // A pausa usa o valor definido acima
+                botao.FlatAppearance.BorderColor = Color.White;
+                await Task.Delay(delayFlip);
             }
 
-            // Muda cor do fundo e borda no meio
             botao.BackColor = corFinal;
-            botao.FlatAppearance.BorderColor = Color.White; // <<< GARANTE BORDA BRANCA
+            botao.FlatAppearance.BorderColor = Color.White;
 
-            // Animação de "expandir" - BORDA BRANCA
             for (int i = 0; i < 10; i++)
             {
                 botao.Top -= 2; botao.Height += 4;
-                botao.FlatAppearance.BorderColor = Color.White; // <<< GARANTE BORDA BRANCA
-                await Task.Delay(delayFlip); // A pausa usa o valor definido acima
+                botao.FlatAppearance.BorderColor = Color.White;
+                await Task.Delay(delayFlip);
             }
 
-            // Pequena pausa final (pode diminuir ou remover se quiser)
-            botao.Top -= 4; await Task.Delay(2);
+            botao.Top -= 4; await Task.Delay(10);
             botao.Top += 4;
 
-            // Garante estado final com borda branca
             botao.FlatAppearance.BorderSize = 3;
-            botao.FlatAppearance.BorderColor = Color.White; // <<< GARANTE BORDA BRANCA
+            botao.FlatAppearance.BorderColor = Color.White;
         }
-        // --- FIM DAS ANIMAÇÕES ACELERADAS ---
 
         private void AtualizaTeclado()
         {
-             foreach (var letra in termo.teclado)
+            foreach (var letra in termo.teclado)
             {
                 var botao = RetornaBotao($"btn{letra.Key}");
                 if (botao == null) continue;
-                Color cor = (letra.Value == 'V') ? Color.Green : (letra.Value == 'A') ? Color.Yellow : (letra.Value == 'P') ? Color.Gray : Color.Brown; 
+                Color cor = (letra.Value == 'V') ? Color.Green : (letra.Value == 'A') ? Color.Yellow : (letra.Value == 'P') ? Color.Gray : Color.Brown;
                 botao.BackColor = cor;
-                botao.FlatAppearance.BorderColor = (cor == Color.Brown) ? Color.White : cor; 
+                botao.FlatAppearance.BorderColor = (cor == Color.Brown) ? Color.White : cor;
                 botao.FlatAppearance.BorderSize = 3;
             }
         }
