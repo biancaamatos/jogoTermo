@@ -3,13 +3,11 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic; // Adicionado para IReadOnlyList (necessário para StatsManager)
-
+using System.Collections.Generic;
 namespace TermoApp
 {
     public class FormTabela : Form
     {
-        // cores alinhadas ao jogo
         private readonly Color Bg = Color.RosyBrown;
         private readonly Color CardBrown = Color.SaddleBrown;
         private readonly Color CardLight = Color.FromArgb(250, 245, 242);
@@ -18,10 +16,8 @@ namespace TermoApp
         private readonly Color Danger = Color.FromArgb(231, 76, 60);
         private readonly Color CardText = Color.FromArgb(30, 30, 30);
 
-        // controles
         private Label lblTitle;
         private Label lblWins, lblLosses, lblTotal, lblBestStreak;
-        // private TableLayoutPanel barsTable; // REMOVIDO
         private Button btnReset, btnClose;
         private TableLayoutPanel mainLayout;
 
@@ -32,36 +28,32 @@ namespace TermoApp
             StartPosition = FormStartPosition.CenterParent;
             BackColor = Bg;
             ForeColor = Color.White;
-            // --- TAMANHO AJUSTADO PARA FICAR MAIS COMPACTO ---
             ClientSize = new Size(460, 240);
             MinimizeBox = false;
             MaximizeBox = false;
 
             InitializeComponents();
 
-            // atualiza após carregar
             this.Load += (s, e) => { RefreshStats(); };
         }
 
         private void InitializeComponents()
         {
-            // Layout: header / stats / buttons
             mainLayout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
                 ColumnCount = 1,
-                RowCount = 3, // --- ALTERADO de 6 para 3 ---
+                RowCount = 3,
                 Padding = new Padding(8),
                 BackColor = Color.Transparent,
                 AutoSize = false
             };
 
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));   // header
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 96F));   // stats
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));  // botões (ocupa o resto)
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 96F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             Controls.Add(mainLayout);
 
-            // header
             var header = new Panel { Dock = DockStyle.Fill, BackColor = CardBrown, Padding = new Padding(6) };
             lblTitle = new Label
             {
@@ -74,7 +66,6 @@ namespace TermoApp
             header.Controls.Add(lblTitle);
             mainLayout.Controls.Add(header, 0, 0);
 
-            // STATS
             var statsTable = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -97,8 +88,7 @@ namespace TermoApp
 
             mainLayout.Controls.Add(statsTable, 0, 1);
 
-           
-            // botões
+
             var btnPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -113,11 +103,9 @@ namespace TermoApp
             btnPanel.Controls.Add(btnClose);
             btnPanel.Controls.Add(btnReset);
 
-            // --- ALTERADO: Posição dos botões movida para a linha 2 ---
             mainLayout.Controls.Add(btnPanel, 0, 2);
         }
 
-        // --- MÉTODO CreateBarRowUniform REMOVIDO ---
 
         private Button MakeButton(string text, Color actionColor)
         {
@@ -208,12 +196,11 @@ namespace TermoApp
 
         private void BtnReset_Click(object sender, EventArgs e)
         {
-                StatsManager.Reset();
-                RefreshStats();
-            }
-        
+            StatsManager.Reset();
+            RefreshStats();
+        }
 
-        // Atualiza UI com dados atuais
+
         private void RefreshStats()
         {
             var wins = StatsManager.Wins;

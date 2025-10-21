@@ -92,6 +92,7 @@
             groupBox2 = new GroupBox();
             label1 = new Label();
             btnPlacar = new Button();
+            btnTema = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -561,7 +562,7 @@
             MensNaoAceito.BackColor = Color.Snow;
             MensNaoAceito.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             MensNaoAceito.ForeColor = Color.DarkRed;
-            MensNaoAceito.Location = new Point(157, 69);
+            MensNaoAceito.Location = new Point(157, 78);
             MensNaoAceito.Name = "MensNaoAceito";
             MensNaoAceito.Size = new Size(370, 42);
             MensNaoAceito.TabIndex = 61;
@@ -1016,7 +1017,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(274, 17);
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(280, 17);
             label1.Name = "label1";
             label1.Size = new Size(127, 41);
             label1.TabIndex = 62;
@@ -1026,13 +1028,23 @@
             // 
             btnPlacar.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnPlacar.ForeColor = Color.IndianRed;
+            btnPlacar.Image = Properties.Resources.WhatsApp_Image_2025_10_21_at_15_49_48;
             btnPlacar.Location = new Point(577, 17);
             btnPlacar.Name = "btnPlacar";
             btnPlacar.Size = new Size(73, 29);
             btnPlacar.TabIndex = 63;
-            btnPlacar.Text = "Placar";
             btnPlacar.UseVisualStyleBackColor = true;
             btnPlacar.Click += btnPlacar_Click;
+            // 
+            // btnTema
+            // 
+            btnTema.Location = new Point(47, 18);
+            btnTema.Name = "btnTema";
+            btnTema.Size = new Size(94, 29);
+            btnTema.TabIndex = 64;
+            btnTema.Text = "Modo Escuro";
+            btnTema.UseVisualStyleBackColor = true;
+            btnTema.Click += btnTema_Click;
             // 
             // Form1
             // 
@@ -1040,13 +1052,14 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
-            ClientSize = new Size(682, 914);
+            ClientSize = new Size(679, 914);
+            Controls.Add(btnTema);
             Controls.Add(btnPlacar);
             Controls.Add(label1);
             Controls.Add(MensNaoAceito);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            ForeColor = SystemColors.ControlLightLight;
+            ForeColor = SystemColors.ActiveCaptionText;
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "Form1";
@@ -1125,5 +1138,6 @@
         private GroupBox groupBox2;
         private Label label1;
         private Button btnPlacar;
+        private Button btnTema;
     }
 }
