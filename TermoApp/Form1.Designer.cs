@@ -561,7 +561,7 @@
             MensNaoAceito.BackColor = Color.Snow;
             MensNaoAceito.Font = new Font("Comic Sans MS", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             MensNaoAceito.ForeColor = Color.DarkRed;
-            MensNaoAceito.Location = new Point(157, 69);
+            MensNaoAceito.Location = new Point(157, 78);
             MensNaoAceito.Name = "MensNaoAceito";
             MensNaoAceito.Size = new Size(370, 42);
             MensNaoAceito.TabIndex = 61;
@@ -1016,7 +1016,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(274, 17);
+            label1.Location = new Point(280, 17);
             label1.Name = "label1";
             label1.Size = new Size(127, 41);
             label1.TabIndex = 62;
@@ -1040,7 +1040,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.RosyBrown;
-            ClientSize = new Size(682, 914);
+            ClientSize = new Size(679, 914);
             Controls.Add(btnPlacar);
             Controls.Add(label1);
             Controls.Add(MensNaoAceito);
