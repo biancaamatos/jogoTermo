@@ -1,13 +1,12 @@
-﻿// TermoApp/Form1.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Media; // NECESSÁRIO PARA SOUNDPLAYER
-using System.Reflection; // NECESSÁRIO PARA CARREGAR RECURSOS
+using System.Media;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TermoLib; // Garanta que o using para TermoLib está presente
+using TermoLib;
 
 namespace TermoApp
 {
@@ -25,9 +24,6 @@ namespace TermoApp
             this.KeyPreview = true;
             this.KeyDown += Form1_KeyDown;
 
-            // --- MODIFICAÇÃO APLICADA (Placar) ---
-            // Vamos aplicar o estilo customizado em todos os botões que começam com "btn",
-            // EXCETO o 'btnPlacar', que deve manter o visual padrão.
             foreach (Control ctrl in this.Controls)
             {
                 if (ctrl is Button btn && btn.Name.StartsWith("btn") && btn.Name != "btnPlacar")
@@ -35,16 +31,14 @@ namespace TermoApp
                     ConfiguraBotaoCustom(btn);
                 }
             }
-            // --- FIM DA MODIFICAÇÃO ---
         }
 
-        // --- MÉTODO PARA TOCAR SONS EMBUTIDOS ---
         private void TocarSom(string nomeArquivoWav)
         {
             try
             {
                 var assembly = Assembly.GetExecutingAssembly();
-                string resourceName = $"TermoApp.Sons.{nomeArquivoWav}"; // Adapte "TermoApp" se seu namespace for diferente
+                string resourceName = $"TermoApp.Sons.{nomeArquivoWav}";
                 using (var stream = assembly.GetManifestResourceStream(resourceName))
                 {
                     if (stream != null) { using (var player = new SoundPlayer(stream)) { player.Play(); } }
@@ -57,7 +51,6 @@ namespace TermoApp
         private async void Form1_Load(object sender, EventArgs e) { await ReiniciarJogoAsync(primeiraVez: true); }
         private async void btnReiniciar_Click(object sender, EventArgs e) { await ReiniciarJogoAsync(); }
 
-        // --- MÉTODO ReiniciarJogoAsync COM NOVA ANIMAÇÃO SELETIVA ---
         private async Task ReiniciarJogoAsync(bool primeiraVez = false)
         {
             termo = new Termo();
@@ -69,7 +62,6 @@ namespace TermoApp
 
             if (primeiraVez)
             {
-                // Garante que a primeira linha tenha borda branca normal ao iniciar
                 for (int i = 1; i <= 5; i++)
                 {
                     var botao = RetornaBotao($"btn1{i}");
@@ -79,7 +71,7 @@ namespace TermoApp
                         botao.FlatAppearance.BorderSize = 3;
                     }
                 }
-                AtualizaSelecaoVisual(); // Chama aqui para a primeira vez
+                AtualizaSelecaoVisual();
                 return;
             }
 
@@ -170,13 +162,11 @@ namespace TermoApp
 
         private void AdicionaLetraVirtual(string letra)
         {
-            // --- MODIFICAÇÃO APLICADA (Esconde mensagem) ---
             var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label;
             if (MensNaoAceito != null && MensNaoAceito.Visible)
             {
                 MensNaoAceito.Visible = false;
             }
-            // --- FIM DA MODIFICAÇÃO ---
 
             if (termo.palavraAtual > 6 || coluna > 5) return;
             var nomeBotao = $"btn{termo.palavraAtual}{coluna}";
@@ -192,13 +182,11 @@ namespace TermoApp
 
         private void btnTeclado_Click(object sender, EventArgs e)
         {
-            // --- MODIFICAÇÃO APLICADA (Esconde mensagem) ---
             var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label;
             if (MensNaoAceito != null && MensNaoAceito.Visible)
             {
                 MensNaoAceito.Visible = false;
             }
-            // --- FIM DA MODIFICAÇÃO ---
 
             if (termo.palavraAtual > 6 || coluna > 5) return;
             var button = (Button)sender;
@@ -216,20 +204,17 @@ namespace TermoApp
 
         private async void btnEnter_Click(object sender, EventArgs e)
         {
-            TocarSom("enter.wav"); // Som de Enter
+            TocarSom("enter.wav");
 
             string palavra = "";
             for (int i = 1; i <= 5; i++) { var nomeBotao = $"btn{termo.palavraAtual}{i}"; var botao = RetornaBotao(nomeBotao); if (botao != null) palavra += botao.Text; }
 
-            // --- MODIFICAÇÃO APLICADA (Mensagem persistente) ---
             var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label;
 
-            // 1. Checa se a palavra está incompleta (não tem 5 letras)
             if (palavra.Length != 5)
             {
                 TocarSom("erro.wav");
                 await AnimaShakeLinha(termo.palavraAtual);
-                // Mensagem específica para palavra incompleta (agora é persistente)
                 if (MensNaoAceito != null)
                 {
                     MensNaoAceito.Text = "Digite uma palavra de 5 letras!";
@@ -238,12 +223,10 @@ namespace TermoApp
                 return;
             }
 
-            // 2. Se tem 5 letras, checa se é uma palavra válida (está no dicionário)
             if (!termo.EstaNoDicionario(palavra))
             {
                 TocarSom("erro.wav");
                 await AnimaShakeLinha(termo.palavraAtual);
-                // Mensagem para palavra completa, mas inválida (agora é persistente)
                 if (MensNaoAceito != null)
                 {
                     MensNaoAceito.Text = "Palavra inválida!";
@@ -251,9 +234,7 @@ namespace TermoApp
                 }
                 return;
             }
-            // --- FIM DA MODIFICAÇÃO ---
 
-            // Se passou nas checagens, o jogo continua...
             if (MensNaoAceito != null) MensNaoAceito.Visible = false;
 
             termo.ChecaPalavra(palavra);
@@ -264,7 +245,7 @@ namespace TermoApp
             {
                 TocarSom("vitoria.wav");
                 StatsManager.RecordWin(termo.tabuleiro.Count);
-                await MostrarMensagemTemporaria("VOCÊ VENCEU!", 2000); // Fim de jogo
+                await MostrarMensagemTemporaria("VOCÊ VENCEU!", 2000);
                 var formPlacarVitoria = new FormTabela();
                 formPlacarVitoria.ShowDialog(this);
                 await ReiniciarJogoAsync();
@@ -274,7 +255,7 @@ namespace TermoApp
             {
                 TocarSom("derrota.wav");
                 StatsManager.RecordLoss(7);
-                await MostrarMensagemTemporaria($"A palavra era: {termo.palavraSorteada}", 3000); // Fim de jogo
+                await MostrarMensagemTemporaria($"A palavra era: {termo.palavraSorteada}", 3000);
                 var formPlacarDerrota = new FormTabela();
                 formPlacarDerrota.ShowDialog(this);
                 await ReiniciarJogoAsync();
@@ -286,13 +267,11 @@ namespace TermoApp
 
         private void bntBackSpace_Click(object sender, EventArgs e)
         {
-            // --- MODIFICAÇÃO APLICADA (Esconde mensagem) ---
             var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label;
             if (MensNaoAceito != null && MensNaoAceito.Visible)
             {
                 MensNaoAceito.Visible = false;
             }
-            // --- FIM DA MODIFICAÇÃO ---
 
             if (termo.palavraAtual > 6) return;
             if (coluna > 5) { coluna = 5; }
@@ -300,7 +279,6 @@ namespace TermoApp
             var botaoParaApagar = RetornaBotao($"btn{termo.palavraAtual}{coluna}");
             if (botaoParaApagar != null) { botaoParaApagar.Text = string.Empty; }
 
-            // --- Som de deletar ---
             TocarSom("deletar.wav");
 
             AtualizaSelecaoVisual();
@@ -411,7 +389,6 @@ namespace TermoApp
             }
         }
 
-        // Este método agora é usado apenas para mensagens de FIM DE JOGO
         private async Task MostrarMensagemTemporaria(string mensagem, int duracaoMs = 2000)
         {
             var MensNaoAceito = this.Controls.Find("MensNaoAceito", true).FirstOrDefault() as Label; if (MensNaoAceito == null) return;
@@ -427,7 +404,7 @@ namespace TermoApp
         {
             foreach (Control ctrl in this.Controls) { if (ctrl is Button btn && btn.Name.StartsWith("btn") && btn.Name.Length == 6) { Color corOriginal = Color.Brown; Color bordaOriginal = Color.White; btn.MouseEnter += (s, e) => { btn.BackColor = ControlPaint.Light(corOriginal, 0.35f); btn.FlatAppearance.BorderColor = ControlPaint.Light(bordaOriginal, 0.5f); btn.FlatAppearance.BorderSize = 4; btn.Cursor = Cursors.Hand; }; btn.MouseLeave += (s, e) => { btn.BackColor = corOriginal; btn.FlatAppearance.BorderColor = bordaOriginal; btn.FlatAppearance.BorderSize = 3; btn.Cursor = Cursors.Default; }; } }
         }
-        private async Task AnimaFadeOutCor(Button botao) // Mantido para o reset do teclado
+        private async Task AnimaFadeOutCor(Button botao)
         {
             if (botao == null) return;
             Color start = botao.BackColor; Color end = Color.Brown;
