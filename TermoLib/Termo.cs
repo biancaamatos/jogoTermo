@@ -19,10 +19,8 @@ namespace TermoLib
     {
         private static Random rdn = new Random();
 
-        // Dicionário usado para validação das palavras inseridas pelo jogador
         public List<string> Dicionario;
 
-        // Lista para as palavras que serão sorteadas no jogo (Palavras.txt)
         private List<string> Palavras;
 
         public string palavraSorteada;
@@ -41,19 +39,15 @@ namespace TermoLib
 
             try
             {
-                // Carrega Dicionario.txt (obrigatório para validação).
                 CarregaDicionario("Dicionario.txt");
 
-                // Carrega Palavras.txt (apenas para sorteio).
                 CarregaPalavrasSorteio("Palavras.txt");
 
-                // Se o dicionário não foi encontrado, mantemos um fallback mínimo embutido.
                 if (Palavras.Count == 0)
                 {
                     Palavras = new List<string> { "TERMO", "JOGAR", "LETRA", "IDEIA", "LIVRO" };
                 }
 
-                // Se não houver lista de sorteio, usamos o dicionário como último recurso.
                 if (Dicionario.Count == 0)
                 {
                     Dicionario = new List<string>(Palavras);
@@ -66,7 +60,6 @@ namespace TermoLib
             }
         }
 
-        // IniciarAsync só garante carregamento adicional se necessário e sorteia a palavra.
         public async Task IniciarAsync()
         {
             await Task.Run(() =>
@@ -74,7 +67,6 @@ namespace TermoLib
                 if (Palavras.Count == 0) CarregaDicionario("Dicionario.txt");
                 if (Dicionario.Count == 0) CarregaPalavrasSorteio("Palavras.txt");
 
-                // NÃO carregar Palavras.txt como dicionário aqui.
                 if (Palavras.Count == 0) Palavras = new List<string> { "TERMO", "JOGAR", "LETRA", "IDEIA", "LIVRO" };
                 if (Dicionario.Count == 0) Dicionario = new List<string>(Palavras);
             });
@@ -82,7 +74,6 @@ namespace TermoLib
             SorteiaPalavra();
         }
 
-        // Carrega o dicionário (Dicionario.txt) — usado somente para validação.
         public void CarregaDicionario(string fileName)
         {
             try
@@ -125,7 +116,6 @@ namespace TermoLib
                 Path.Combine(basePath, "TermoLib", fileName)
             };
 
-            // sobe a árvore de diretórios procurando
             string dir = basePath;
             for (int i = 0; i < 6 && !string.IsNullOrEmpty(dir); i++)
             {
@@ -133,7 +123,6 @@ namespace TermoLib
                 try { dir = Directory.GetParent(dir)?.FullName; } catch { break; }
             }
 
-            // caminho da assembly (test runner)
             try
             {
                 var asmDir = Path.GetDirectoryName(typeof(Termo).Assembly.Location);
@@ -148,7 +137,6 @@ namespace TermoLib
             return null;
         }
 
-        // Carrega apenas as palavras que serão sorteadas (Palavras.txt)
         public void CarregaPalavrasSorteio(string fileName)
         {
             try
@@ -165,7 +153,6 @@ namespace TermoLib
             }
             catch
             {
-                // silencioso
             }
         }
 
@@ -181,7 +168,6 @@ namespace TermoLib
                 Path.Combine(basePath, "TermoLib", fileName)
             };
 
-            // tentar subir a árvore de diretórios (IDE/test runner pode executar em pastas profundas)
             string dir = basePath;
             for (int i = 0; i < 6; i++)
             {
@@ -198,7 +184,6 @@ namespace TermoLib
                 }
             }
 
-            // tentar local da assembly (caso de test runner)
             try
             {
                 var asmDir = Path.GetDirectoryName(typeof(Termo).Assembly.Location);
@@ -220,24 +205,19 @@ namespace TermoLib
                 }
                 catch
                 {
-                    // ignorar e continuar procurando
                 }
             }
 
-            // nenhum arquivo encontrado
             return Array.Empty<string>();
         }
 
-        // Normaliza uma palavra: trim, upper, remove acentos e remove caracteres que não sejam A-Z.
         private static string NormalizeWord(string texto)
         {
             if (string.IsNullOrEmpty(texto)) return string.Empty;
             texto = texto.Trim().ToUpperInvariant();
 
-            // remove BOM e control chars
             texto = texto.Where(c => !char.IsControl(c) && c != '\uFEFF').Aggregate(new StringBuilder(), (sb, c) => sb.Append(c)).ToString();
 
-            // remove acentos
             var normalized = texto.Normalize(NormalizationForm.FormD);
             var sb2 = new StringBuilder();
             foreach (var ch in normalized)
@@ -248,20 +228,16 @@ namespace TermoLib
             }
             var semAcentos = sb2.ToString().Normalize(NormalizationForm.FormC);
 
-            // mantém apenas A-Z
             var cleaned = new string(semAcentos.Where(c => c >= 'A' && c <= 'Z').ToArray());
             return cleaned;
         }
 
-        // Sorteia usando EXCLUSIVAMENTE palavrasSorteio quando disponível
         public void SorteiaPalavra()
         {
             var source = (Dicionario != null && Dicionario.Count > 0) ? Dicionario : Palavras;
             if (source == null || source.Count == 0) { palavraSorteada = ""; return; }
             palavraSorteada = source[rdn.Next(0, source.Count)];
         }
-
-        // Validação da palavra do jogador: normaliza e verifica existência no Dicionario (palavras).
         public bool ChecaPalavra(string palavra)
         {
             if (string.IsNullOrWhiteSpace(palavra)) return false;
@@ -314,7 +290,6 @@ namespace TermoLib
             return true;
         }
 
-        // Método auxiliar público para diagnóstico: verifica se uma palavra está no dicionário normalizada.
         public bool EstaNoDicionario(string palavra)
         {
             if (string.IsNullOrWhiteSpace(palavra)) return false;
@@ -322,7 +297,6 @@ namespace TermoLib
             return Palavras.Contains(p);
         }
 
-        // Método auxiliar público para diagnóstico: retorna a quantidade de palavras carregadas
         public int DicionarioCount() => Palavras?.Count ?? 0;
     }
 }
